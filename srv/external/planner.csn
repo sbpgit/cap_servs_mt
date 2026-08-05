@@ -1,0 +1,833 @@
+{
+ "meta": {
+  "creator": "cds-dk 9.2.0"
+ },
+ "$version": "2.0",
+ "definitions": {
+  "planner.getAssemblyLagfun": {
+   "kind": "function",
+   "@cds.external": true,
+   "params": {
+    "FACTORY_LOCATION": {
+     "type": "cds.String",
+     "length": 10
+    },
+    "LOCATION": {
+     "type": "cds.String",
+     "length": 10
+    },
+    "PRODUCT": {
+     "type": "cds.String",
+     "length": 40
+    },
+    "START_MONTH": {
+     "type": "cds.String",
+     "length": 20
+    },
+    "END_MONTH": {
+     "type": "cds.String",
+     "length": 20
+    }
+   },
+   "returns": {
+    "type": "cds.LargeString"
+   }
+  },
+  "planner.getOptPercentLagfun": {
+   "kind": "function",
+   "@cds.external": true,
+   "params": {
+    "FACTORY_LOACATION": {
+     "type": "cds.String",
+     "length": 10
+    },
+    "LOCATION": {
+     "type": "cds.String",
+     "length": 10
+    },
+    "PRODUCT": {
+     "type": "cds.String",
+     "length": 40
+    },
+    "MONTH": {
+     "type": "cds.String",
+     "length": 40
+    },
+    "CHARACTERISTIC": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "CHARACTERISTIC_VALUE": {
+     "type": "cds.String",
+     "length": 100
+    }
+   },
+   "returns": {
+    "type": "cds.LargeString"
+   }
+  },
+  "planner.getOptPercentLagFun": {
+   "kind": "function",
+   "@cds.external": true,
+   "params": {
+    "FACTORY_LOCATION": {
+     "type": "cds.String",
+     "length": 10
+    },
+    "LOCATION": {
+     "type": "cds.String",
+     "length": 10
+    },
+    "PRODUCT": {
+     "type": "cds.String",
+     "length": 40
+    },
+    "START_MONTH": {
+     "type": "cds.String",
+     "length": 20
+    },
+    "END_MONTH": {
+     "type": "cds.String",
+     "length": 20
+    }
+   },
+   "returns": {
+    "type": "cds.LargeString"
+   }
+  },
+  "planner.getRestrictionLagfun": {
+   "kind": "function",
+   "@cds.external": true,
+   "params": {
+    "FACTORY_LOACATION": {
+     "type": "cds.String",
+     "length": 10
+    },
+    "LOCATION": {
+     "type": "cds.String",
+     "length": 10
+    },
+    "LINE": {
+     "type": "cds.String",
+     "length": 40
+    },
+    "RESTRICTION_ID": {
+     "type": "cds.String",
+     "length": 50
+    },
+    "MONTH": {
+     "type": "cds.String",
+     "length": 40
+    }
+   },
+   "returns": {
+    "type": "cds.LargeString"
+   }
+  },
+  "planner.getRestrictionLagFun": {
+   "kind": "function",
+   "@cds.external": true,
+   "params": {
+    "FACTORY_LOCATION": {
+     "type": "cds.String",
+     "length": 10
+    },
+    "LOCATION": {
+     "type": "cds.String",
+     "length": 10
+    },
+    "START_MONTH": {
+     "type": "cds.String",
+     "length": 20
+    },
+    "END_MONTH": {
+     "type": "cds.String",
+     "length": 20
+    }
+   },
+   "returns": {
+    "type": "cds.LargeString"
+   }
+  },
+  "planner.getPrdDmdLagfun": {
+   "kind": "function",
+   "@cds.external": true,
+   "params": {
+    "FACTORY_LOACATION": {
+     "type": "cds.String",
+     "length": 10
+    },
+    "LOCATION": {
+     "type": "cds.String",
+     "length": 10
+    },
+    "MONTH": {
+     "type": "cds.String",
+     "length": 40
+    },
+    "PRODUCT": {
+     "type": "cds.String",
+     "length": 40
+    }
+   },
+   "returns": {
+    "type": "cds.LargeString"
+   }
+  },
+  "planner.getPrdDmdLagFun": {
+   "kind": "function",
+   "@cds.external": true,
+   "params": {
+    "FACTORY_LOCATION": {
+     "type": "cds.String",
+     "length": 10
+    },
+    "LOCATION": {
+     "type": "cds.String",
+     "length": 10
+    },
+    "PRODUCT": {
+     "type": "cds.String",
+     "length": 40
+    },
+    "START_MONTH": {
+     "type": "cds.String",
+     "length": 20
+    },
+    "END_MONTH": {
+     "type": "cds.String",
+     "length": 20
+    }
+   },
+   "returns": {
+    "type": "cds.LargeString"
+   }
+  },
+  "planner.createVariantPlanner": {
+   "kind": "function",
+   "@cds.external": true,
+   "params": {
+    "Flag": {
+     "type": "cds.LargeString"
+    },
+    "USER": {
+     "type": "cds.LargeString"
+    },
+    "VARDATA": {
+     "type": "cds.LargeString"
+    }
+   },
+   "returns": {
+    "type": "cds.LargeString"
+   }
+  },
+  "planner.updateVariantPlanner": {
+   "kind": "function",
+   "@cds.external": true,
+   "params": {
+    "VARDATA": {
+     "type": "cds.LargeString"
+    }
+   },
+   "returns": {
+    "type": "cds.LargeString"
+   }
+  },
+  "planner.getOptionPercentageLag": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "FACTORY_LOC": {
+     "type": "cds.String",
+     "length": 4,
+     "@Common.Label": "FACTORY_LOC",
+     "key":true
+    },
+    "LOCATION_ID": {
+     "type": "cds.String",
+     "length": 4,
+     "@Common.Label": "LOCATION_ID",
+     "key":true
+    },
+    "PRODUCT_ID": {
+     "type": "cds.String",
+     "length": 40,
+     "@Common.Label": "PRODUCT_ID",
+     "key":true
+    },
+    "CHAR_NUM": {
+     "type": "cds.String",
+     "length": 100,
+     "@Common.Label": "Characteristic Number",
+     "key":true
+    },
+    "CHARVAL_NUM": {
+     "type": "cds.String",
+     "length": 80,
+     "@Common.Label": "Characteristic Value Number",
+     "key":true
+    },
+    "SELECTED_MONTH": {
+     "type": "cds.String",
+     "length": 20,
+     "@Common.Label": "MONTH"
+    },
+    "LAG_MONTH": {
+     "type": "cds.Integer",
+     "@Common.Label": "LAG_MONTH"
+    },
+    "ACTUAL_MONTH": {
+     "type": "cds.String",
+     "length": 50,
+     "@Common.Label": "ACTUAL_MONTH"
+    },
+    "LAG_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "LAG_QTY"
+    },
+    "ACTUAL_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "ACTUAL_QTY"
+    },
+    "MAPE": {
+     "type": "cds.Integer",
+     "@Common.Label": "ACTUAL_QTY"
+    },
+    "MAPE_QTY_ABS": {
+     "type": "cds.Integer",
+     "@Common.Label": "MAPE_QTY_ABS"
+    },
+    "MAPE_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "MAPE_QTY"
+    }
+   }
+  },
+  "planner.getRestrictionLag": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "FACTORY_LOC": {
+     "type": "cds.String",
+     "length": 4,
+     "@Common.Label": "FACTORY_LOC",
+     "key":true
+    },
+    "LOCATION_ID": {
+     "type": "cds.String",
+     "length": 4,
+     "@Common.Label": "LOCATION_ID",
+     "key":true
+    },
+    "LINE_ID": {
+     "type": "cds.String",
+     "length": 40,
+     "@Common.Label": "Line",
+     "key":true
+    },
+    "RESTRICTION": {
+     "type": "cds.String",
+     "length": 30,
+     "@Common.Label": "Restriction",
+     "key":true
+    },
+    "SELECTED_MONTH": {
+     "type": "cds.String",
+     "length": 20,
+     "@Common.Label": "MONTH"
+    },
+    "LAG_MONTH": {
+     "type": "cds.Integer",
+     "@Common.Label": "LAG_MONTH"
+    },
+    "ACTUAL_MONTH": {
+     "type": "cds.String",
+     "length": 50,
+     "@Common.Label": "ACTUAL_MONTH"
+    },
+    "LAG_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "LAG_QTY"
+    },
+    "ACTUAL_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "ACTUAL_QTY"
+    },
+    "MAPE": {
+     "type": "cds.Integer",
+     "@Common.Label": "ACTUAL_QTY"
+    },
+    "MAPE_QTY_ABS": {
+     "type": "cds.Integer",
+     "@Common.Label": "MAPE_QTY_ABS"
+    },
+    "MAPE_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "MAPE_QTY"
+    }
+   }
+  },
+  "planner.getAssemblyLag": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "FACTORY_LOC": {
+     "type": "cds.String",
+     "length": 4,
+     "@Common.Label": "FACTORY_LOC"
+    },
+    "LOCATION_ID": {
+     "type": "cds.String",
+     "length": 4,
+     "@Common.Label": "LOCATION_ID"
+    },
+    "PRODUCT_ID": {
+     "type": "cds.String",
+     "length": 40,
+     "@Common.Label": "PRODUCT_ID"
+    },
+    "ASSEMBLY": {
+     "type": "cds.String",
+     "length": 200,
+     "@Common.Label": "ASSEMBLY"
+    },
+    "MRP_GROUP": {
+     "type": "cds.String",
+     "length": 4,
+     "@Common.Label": "MRP Group"
+    },
+    "MRP_TYPE": {
+     "type": "cds.String",
+     "length": 2,
+     "@Common.Label": "MRP Type"
+    },
+    "SELECTED_MONTH": {
+     "type": "cds.String",
+     "length": 20,
+     "@Common.Label": "MONTH"
+    },
+    "LAG_MONTH": {
+     "type": "cds.Integer",
+     "@Common.Label": "LAG_MONTH"
+    },
+    "ACTUAL_MONTH": {
+     "type": "cds.String",
+     "length": 50,
+     "@Common.Label": "ACTUAL_MONTH",
+      "key":true
+    },
+    "LAG_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "LAG_QTY",
+      "key":true
+    },
+    "ACTUAL_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "ACTUAL_QTY",
+      "key":true
+    },
+    "MAPE": {
+     "type": "cds.Integer",
+     "@Common.Label": "ACTUAL_QTY",
+      "key":true
+    },
+    "MAPE_QTY_ABS": {
+     "type": "cds.Integer",
+     "@Common.Label": "MAPE_QTY_ABS"
+    },
+    "MAPE_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "MAPE_QTY"
+    }
+   }
+  },
+  "planner.getAssemblyData": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "FACTORY_LOC": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true,
+     "@Common.Label": "Factory Location"
+    },
+    "LOCATION_ID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true,
+     "@Common.Label": "Location"
+    },
+    "PRODUCT_ID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 40,
+     "notNull": true,
+     "@Common.Label": "Product"
+    },
+    "ASSEMBLY": {
+     "key": true,
+     "type": "cds.String",
+     "length": 200,
+     "notNull": true,
+     "@Common.Label": "Assembly"
+    },
+    "MONTH": {
+     "key": true,
+     "type": "cds.String",
+     "length": 20,
+     "notNull": true,
+     "@Common.Label": "Telescopic month"
+    },
+    "LAG_MONTH": {
+     "key": true,
+     "type": "cds.Integer",
+     "notNull": true,
+     "@Common.Label": "Lag Month"
+    },
+    "LAG_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "Lag Quantity"
+    },
+    "ACTUAL_MONTH": {
+     "type": "cds.String",
+     "length": 20,
+     "@Common.Label": "Actual Month"
+    },
+    "ACTUAL_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "Actual Quantity"
+    },
+    "CREATED_TIME": {
+     "key": true,
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "notNull": true,
+     "@Core.ComputedDefaultValue": true
+    }
+   }
+  },
+  "planner.getRTRData": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "FACTORY_LOC": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true,
+     "@Common.Label": "Factory Location"
+    },
+    "LOCATION_ID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true,
+     "@Common.Label": "Location"
+    },
+    "LINE_ID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 40,
+     "notNull": true,
+     "@Common.Label": "Line ID"
+    },
+    "RESTRICTION": {
+     "key": true,
+     "type": "cds.String",
+     "length": 30,
+     "notNull": true,
+     "@Common.Label": "Restriction"
+    },
+    "MONTH": {
+     "key": true,
+     "type": "cds.String",
+     "length": 20,
+     "notNull": true,
+     "@Common.Label": "Telescopic month"
+    },
+    "LAG_MONTH": {
+     "key": true,
+     "type": "cds.Integer",
+     "notNull": true,
+     "@Common.Label": "Lag Month"
+    },
+    "CREATED_TIME": {
+     "key": true,
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "notNull": true,
+     "@Core.ComputedDefaultValue": true
+    },
+    "LAG_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "Lag Quantity"
+    },
+    "ACTUAL_MONTH": {
+     "type": "cds.String",
+     "length": 20,
+     "@Common.Label": "Actual Month"
+    },
+    "ACTUAL_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "Actual Quantity"
+    }
+   }
+  },
+  "planner.getOptPrtData": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "FACTORY_LOC": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true,
+     "@Common.Label": "Factory Location"
+    },
+    "LOCATION_ID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true,
+     "@Common.Label": "Location"
+    },
+    "PRODUCT_ID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 40,
+     "notNull": true,
+     "@Common.Label": "Product"
+    },
+    "CHAR_NUM": {
+     "key": true,
+     "type": "cds.String",
+     "length": 100,
+     "notNull": true,
+     "@Common.Label": "Charateristic Name"
+    },
+    "CHAR_VALUE": {
+     "key": true,
+     "type": "cds.String",
+     "length": 80,
+     "notNull": true,
+     "@Common.Label": "Charateristic Value"
+    },
+    "MONTH": {
+     "key": true,
+     "type": "cds.String",
+     "length": 20,
+     "notNull": true,
+     "@Common.Label": "Telescopic month"
+    },
+    "LAG_MONTH": {
+     "key": true,
+     "type": "cds.Integer",
+     "notNull": true,
+     "@Common.Label": "Lag Month"
+    },
+    "CREATED_TIME": {
+     "key": true,
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "notNull": true,
+     "@Core.ComputedDefaultValue": true
+    },
+    "LAG_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "Lag Quantity"
+    },
+    "ACTUAL_MONTH": {
+     "type": "cds.String",
+     "length": 20,
+     "@Common.Label": "Actual Month"
+    },
+    "ACTUAL_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "Actual Quantity"
+    }
+   }
+  },
+  "planner.getPrdDmdData": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "FACTORY_LOC": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true,
+     "@Common.Label": "Factory Location"
+    },
+    "LOCATION_ID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true,
+     "@Common.Label": "Location"
+    },
+    "PRODUCT_ID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 40,
+     "notNull": true,
+     "@Common.Label": "Product"
+    },
+    "MONTH": {
+     "key": true,
+     "type": "cds.String",
+     "length": 20,
+     "notNull": true,
+     "@Common.Label": "Telescopic month"
+    },
+    "LAG_MONTH": {
+     "key": true,
+     "type": "cds.Integer",
+     "notNull": true,
+     "@Common.Label": "Lag Month"
+    },
+    "CREATED_TIME": {
+     "key": true,
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "notNull": true,
+     "@Core.ComputedDefaultValue": true
+    },
+    "LAG_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "Lag Quantity"
+    },
+    "ACTUAL_MONTH": {
+     "type": "cds.String",
+     "length": 20,
+     "@Common.Label": "Actual Month"
+    },
+    "ACTUAL_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "Actual Quantity"
+    }
+   }
+  },
+  "planner.getPlannerLocProd": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "FACTORY_LOC": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true,
+     "@Common.Label": "Factory Location "
+    },
+    "LOCATION_DESC": {
+     "type": "cds.String",
+     "length": 30,
+     "@Common.Label": "Factory Loc Description"
+    },
+    "PLAN_LOC": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true,
+     "@Common.Label": "Planning Location "
+    },
+    "PLANLOC_DESC": {
+     "type": "cds.String",
+     "length": 30,
+     "@Common.Label": "Planning Location Description"
+    },
+    "DEMAND_LOC": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true,
+     "@Common.Label": "Demand Location "
+    },
+    "DEMAND_DESC": {
+     "type": "cds.String",
+     "length": 30,
+     "@Common.Label": "Demand Location Description"
+    },
+    "PRODUCT_ID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 40,
+     "notNull": true,
+     "@Common.Label": "Product"
+    },
+    "PROD_DESC": {
+     "type": "cds.String",
+     "length": 40,
+     "@Common.Label": "Product Description"
+    },
+    "REF_PRODID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 40,
+     "notNull": true,
+     "@Common.Label": "Reference Product Id"
+    },
+    "REFPROD_DESC": {
+     "type": "cds.String",
+     "length": 100,
+     "@Common.Label": "Reference Product Description"
+    },
+    "MRP_GROUP": {
+     "type": "cds.String",
+     "length": 4,
+     "@Common.Label": "MRP Group"
+    },
+    "MATERIAL_TYPE": {
+     "type": "cds.String",
+     "length": 4,
+     "@Common.Label": "Material Type"
+    },
+    "USER": {
+     "key": true,
+     "type": "cds.String",
+     "length": 100,
+     "notNull": true,
+     "@Common.Label": "User"
+    }
+   }
+  },
+  "planner.getAssemblyDesc": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "MAT_CHILD": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true,
+     "@Common.Label": "LOCATION_ID"
+    },
+    "PROD_DESC": {
+     "key": true,
+     "type": "cds.String",
+     "length": 40,
+     "notNull": true,
+     "@Common.Label": "PRODUCT_ID"
+    }
+   }
+  },
+  "planner": {
+   "kind": "service",
+   "@cds.external": true
+  }
+ }
+}

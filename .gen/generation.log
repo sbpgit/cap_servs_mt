@@ -1,0 +1,32 @@
+Starting CAP Project Generator...
+Using @sap/cds-dk [9.8.1] from /home/user/.node_modules_global/lib/node_modules/@sap/cds-dk
+Using @sap/generator-cap-project [2.0.6] from [/extbin/globals/bun/global/install/node_modules/@sap/generator-cap-project]
+Using root path [/home/user/projects]
+
+Creating project with destination, hana, mta, multitenancy, nodejs, xsuaa
+
+Adding facet: nodejs
+Adding facet: mta
+Adding facet: xsuaa
+Adding facet: hana
+Adding facet: multitenancy
+Adding facet: destination
+
+Successfully initialized CAP project
+Continue with: code cap_servs_mt 
+
+
+Installing dependencies...
+
+added 281 packages, and audited 282 packages in 5s
+
+39 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+Finished installing dependencies
+
+Done setting up project cap_servs_mt
+Project is ready to use
+

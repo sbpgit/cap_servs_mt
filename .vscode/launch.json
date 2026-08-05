@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run cap_servs_mt-2 (hybrid)",
+      "request": "launch",
+      "type": "node",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "cds",
+        "watch",
+        "--profile",
+        "hybrid"
+      ],
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "envFile": "${workspaceFolder}/.env2",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
+  ]
+}

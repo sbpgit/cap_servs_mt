@@ -1,0 +1,362 @@
+{
+ "meta": {
+  "creator": "cds-dk 9.2.0"
+ },
+ "$version": "2.0",
+ "definitions": {
+  "alerts": {
+   "kind": "service",
+   "@cds.external": true,
+   "@m.IsDefaultEntityContainer": "true"
+  },
+  "alerts.getAlertLogs": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "LOG_ID": {
+     "key": true,
+     "type": "cds.Integer",
+     "notNull": true
+    },
+    "APPL": {
+     "key": true,
+     "type": "cds.String",
+     "length": 100,
+     "notNull": true
+    },
+    "MSGID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 3,
+     "notNull": true
+    },
+    "MSGGRP": {
+     "key": true,
+     "type": "cds.String",
+     "length": 20,
+     "notNull": true
+    },
+    "EXP_DATE": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date"
+    },
+    "LOCATION_ID": {
+     "type": "cds.String",
+     "length": 4
+    },
+    "PRODUCT_ID": {
+     "type": "cds.String",
+     "length": 40
+    },
+    "MSGTXT": {
+     "type": "cds.LargeString"
+    },
+    "PARA1": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "PARA2": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "PARA3": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "PARA4": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "PARA5": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "PARA6": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "PARA7": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "PARA8": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "PARA9": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "PARA10": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "CREATED_BY": {
+     "type": "cds.LargeString"
+    },
+    "CREATED_TIME": {
+     "type": "cds.Timestamp",
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@odata.Precision": 7
+    },
+    "LOGMSG": {
+     "type": "cds.LargeString"
+    },
+    "MSGTYP": {
+     "type": "cds.String",
+     "length": 1
+    }
+   }
+  },
+  "alerts.getApplications": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "NAME": {
+     "key": true,
+     "type": "cds.String",
+     "length": 100,
+     "notNull": true
+    },
+    "DESCRIPTION": {
+     "type": "cds.String",
+     "length": 100
+    }
+   }
+  },
+  "alerts.getMessageGroups": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "GROUP": {
+     "key": true,
+     "type": "cds.String",
+     "length": 100,
+     "notNull": true
+    },
+    "DESCRIPTION": {
+     "type": "cds.String",
+     "length": 100
+    }
+   }
+  },
+  "alerts.maintainAlerts": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "APPL": {
+     "key": true,
+     "type": "cds.String",
+     "length": 100,
+     "notNull": true
+    },
+    "MSGID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 3,
+     "notNull": true
+    },
+    "MSGGRP": {
+     "key": true,
+     "type": "cds.String",
+     "length": 20,
+     "notNull": true
+    },
+    "MSGTYP": {
+     "type": "cds.String",
+     "length": 1
+    },
+    "MSGTXT": {
+     "type": "cds.String",
+     "length": 120
+    },
+    "MSGDESC": {
+     "type": "cds.LargeString"
+    },
+    "VALID_DAYS": {
+     "type": "cds.Integer"
+    },
+    "LOCATION_ID": {
+     "type": "cds.String",
+     "length": 4
+    },
+    "PRODUCT_ID": {
+     "type": "cds.String",
+     "length": 40
+    },
+    "PARA1": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "PARA2": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "PARA3": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "PARA4": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "PARA5": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "PARA6": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "PARA7": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "PARA8": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "PARA9": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "PARA10": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "DEFAULT": {
+     "type": "cds.String",
+     "length": 1
+    },
+    "ACTIVE": {
+     "type": "cds.Boolean"
+    }
+   }
+  },
+  "alerts.getPlannerAlerts": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "LOG_ID": {
+     "key": true,
+     "type": "cds.Integer",
+     "notNull": true
+    },
+    "APPL": {
+     "key": true,
+     "type": "cds.LargeString",
+     "notNull": true
+    },
+    "MSGID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 3,
+     "notNull": true
+    },
+    "MSGGRP": {
+     "key": true,
+     "type": "cds.String",
+     "length": 20,
+     "notNull": true
+    },
+    "LOCATION_ID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true
+    },
+    "PRODUCT_ID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 40,
+     "notNull": true
+    },
+    "SUCCESS_COUNT": {
+     "key": true,
+     "type": "cds.Integer",
+     "notNull": true
+    },
+    "ERROR_COUNT": {
+     "key": true,
+     "type": "cds.Integer",
+     "notNull": true
+    },
+    "WARNING_COUNT": {
+     "key": true,
+     "type": "cds.Integer",
+     "notNull": true
+    },
+    "MSGTXT": {
+     "type": "cds.LargeString"
+    },
+    "MESSAGE": {
+     "type": "cds.String",
+     "length": 120
+    }
+   }
+  },
+  "alerts.getLocations": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "LOCATION_ID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true
+    }
+   }
+  },
+  "alerts.getProducts": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "PRODUCT_ID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 40,
+     "notNull": true
+    }
+   }
+  },
+  "alerts.getfactorylocdesc": {
+   "kind": "function",
+   "@cds.external": true,
+   "returns": {
+    "type": "cds.LargeString"
+   }
+  },
+  "alerts.maintainAlertLogs": {
+   "kind": "action",
+   "@cds.external": true,
+   "params": {
+    "FLAG": {
+     "type": "cds.LargeString"
+    },
+    "USERNAME": {
+     "type": "cds.LargeString"
+    },
+    "OBJ": {
+     "type": "cds.LargeString"
+    }
+   },
+   "returns": {
+    "type": "cds.LargeString"
+   }
+  },
+  "alerts.purgeAlerts": {
+   "kind": "action",
+   "@cds.external": true,
+   "returns": {
+    "type": "cds.LargeString"
+   }
+  }
+ }
+}

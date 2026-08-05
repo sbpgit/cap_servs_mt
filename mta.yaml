@@ -1,0 +1,101 @@
+_schema-version: 3.3.0
+ID: cap_servs_mt
+version: 1.0.0
+description: "CAP Services application."
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production
+modules:
+  - name: cap_servs_mt-srv
+    type: nodejs
+    path: gen/srv
+    build-parameters:
+      builder: npm-ci
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: cap_servs_mt-auth
+      - name: cap_servs_mt-db
+      - name: cap_servs_mt-destination
+
+  - name: cap_servs_mt-mtx
+    type: nodejs
+    path: gen/mtx/sidecar
+    requires:
+      - name: cap_servs_mt-auth
+      - name: cap_servs_mt-db
+      - name: cap_servs_mt-registry
+      - name: cap_servs_mt-destination
+    build-parameters:
+      builder: npm-ci
+    parameters:
+      instances: 1
+      memory: 256M
+      disk-quota: 512M
+    hooks:
+      - name: upgrade-all
+        type: task
+        phases:
+          - blue-green.application.before-start.idle
+          - deploy.application.before-start
+        parameters:
+          name: upgrade
+          memory: 512M # increase as required
+          disk-quota: 768M # increase as required
+          command: cds-mtx upgrade '*'
+    provides:
+      - name: mtx-api
+        properties:
+          mtx-url: ${default-url}
+
+resources:
+  - name: cap_servs_mt-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: cap_servs_mt-${org}-${space}
+        tenant-mode: shared
+        oauth2-configuration:
+          credential-types:
+            - "binding-secret"
+            - "x509"
+  - name: cap_servs_mt-db
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: service-manager
+      service-plan: container
+  - name: cap_servs_mt-registry
+    type: org.cloudfoundry.managed-service
+    requires:
+      - name: mtx-api
+    parameters:
+      service: saas-registry
+      service-plan: application
+      config:
+        xsappname: cap_servs_mt-${org}-${space}
+        appName: cap_servs_mt-${org}-${space}
+        displayName: cap_servs_mt
+        description: CAP Services application.
+        category: 'VC Planner Subscriptions'
+        appUrls:
+          getDependencies: ~{mtx-api/mtx-url}/-/cds/saas-provisioning/dependencies
+          onSubscription: ~{mtx-api/mtx-url}/-/cds/saas-provisioning/tenant/{tenantId}
+          onSubscriptionAsync: true
+          onUnSubscriptionAsync: true
+          onUpdateDependenciesAsync: true
+          callbackTimeoutMillis: 300000 # Increase if your deployments are taking longer than that
+  - name: cap_servs_mt-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite

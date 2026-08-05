@@ -1,0 +1,127 @@
+{
+  "name": "cap_servs_mt",
+  "version": "1.0.0",
+  "dependencies": {
+    "@sap/cds-hana": "^2",
+    "@sap-cloud-sdk/resilience": "^4.5.1",
+    "@sap/cds": "^8",
+    "@sap/cds-mtxs": "^2",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
+    "@sap/ux-specification": "^1.144.3",
+    "@sap/xsenv": "^4.2.0",
+    "@sap/xssec": "^3",
+    "axios": "^1.6.6",
+    "body-parser": "^2.2.0",
+    "cfenv": "^1.2.4",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "hdb": "^2.27.1",
+    "jsonwebtoken": "^9.0.3",
+    "passport": "^0",
+    "path": "^0.12.7",
+    "sql": "^0.78.0",
+    "sqlite3": "^5.1.6",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+     "@sap/cds-dk": "^7",
+    "@sap/ux-specification": "^1.120.6",
+    "rimraf": "^3.0.2"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "undeploy": "cf undeploy capservs--delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-datalaketesting": "cds watch --open datalaketesting/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "private": true,
+  "cds": {
+    "features": {
+      "fetch_csrf": true,
+      "odata_new_parser": true
+    },
+    "hana": {
+      "deploy-format": "hdbtable",
+      "syntax": "hdi"
+    },
+    "requires": {
+      "db": {
+    "kind": "hana"
+  },
+  "[hybrid]": {
+      "db": "hana",
+      "multitenancy": true
+    },
+      "[production]": {
+        "auth": "xsuaa",
+        "multitenancy": true
+      },
+      "[with-mtx]": {
+        "multitenancy": true
+      },
+      "destinations": true,
+      "config_products": {
+        "kind": "odata",
+        "model": "srv/external/config_products",
+        "[development]": {
+          "credentials": {
+            "url": "https://sbpmtt-dev-vcplanner-mt-srv.cfapps.us10-001.hana.ondemand.com/catalog"
+          }
+        },
+        "[production]": {
+          "credentials": {
+            "destination": "ConfigProdAuth",
+            "path": "v2/catalog"
+          }
+        }
+      },
+      "alerts": {
+        "kind": "odata",
+        "model": "srv/external/alerts",
+        "[development]": {
+          "credentials": {
+            "url": "https://sbpmtt-dev-vcplanner-mt-srv.cfapps.us10-001.hana.ondemand.com/catalog"
+          }
+        },
+        "[production]": {
+          "credentials": {
+            "destination": "vcp_alerts",
+            "path": "v2/catalog"
+          }
+        }
+      },
+      "config_products_anal": {
+        "kind": "odata-v2",
+        "model": "srv/external/config_products_anal",
+        "[development]": {
+          "credentials": {
+            "url": "https://sbpmtt-dev-vcplanner-mt-srv.cfapps.us10-001.hana.ondemand.com/analytical"
+          }
+        },
+        "[production]": {
+          "credentials": {
+            "destination": "ConfigProdAuth",
+            "path": "v2/analytical"
+          }
+        }
+      },
+      "planner": {
+        "kind": "odata",
+        "model": "srv/external/planner",
+        "[development]": {
+          "credentials": {
+            "url": "https://sbpmtt-dev-vcplanner-mt-srv.cfapps.us10-001.hana.ondemand.com/planner"
+          }
+        },
+        "[production]": {
+          "credentials": {
+            "destination": "ConfigProdAuth",
+            "path": "v2/planner"
+          }
+        }
+      }
+    },
+    "profile": "with-mtx-sidecar"
+  }
+}

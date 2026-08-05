@@ -1,0 +1,308 @@
+# POST http://localhost:4004/odata/v4/catalog/insertClassCharac
+# Content-Type: application/json
+
+# {
+#     "CLASS": [
+#         {
+#             "INT_CLS_NUMBER": 1,
+#             "CLASS_TYPE": "",
+#             "CLASS": "",
+#             "ZDESC": "",
+#             "DELETE_FLAG": "",
+#             "CHANGED_DATE": "",
+#             "CHANGED_TIME": "",
+#             "CHANGED_BY": "",
+#             "CREATED_DATE": "",
+#             "CREATED_TIME": "",
+#             "CREATED_BY": "",
+#             "CLASS_CHAR": [
+#                 {
+#                     "INT_CHAR": 1906,
+#                     "CHAR_NAME": "",
+#                     "CHAR_DESC": "",
+#                     "CHAR_GROUP": "",
+#                     "CHAR_DATATYPE": "",
+#                     "CHAR_CATEGORY": "",
+#                     "MULTI_CHAR": "",
+#                     "ENTRY_REQ": "",
+#                     "DELETE_FLAG": "",
+#                     "CHANGED_DATE": "",
+#                     "CHANGED_TIME": "",
+#                     "CHANGED_BY": "",
+#                     "CREATED_DATE": "",
+#                     "CREATED_TIME": "",
+#                     "CREATED_BY": "",
+#                     "CHAR_VALUES": [
+#                         {
+#                             "CHAR_VALUE": "GLASS",
+#                             "CHAR_VDESC": "Glass",
+#                             "DELETE_FLAG": "",
+#                             "CHANGED_DATE": "2025-10-08",
+#                             "CHANGED_TIME": "08:20:38",
+#                             "CHANGED_BY": "SBP",
+#                             "CREATED_DATE": "2025-10-08",
+#                             "CREATED_TIME": "08:20:38",
+#                             "CREATED_BY": "SBP"
+#                         },
+#                         {
+#                             "CHAR_VALUE": "SOLIDHPL",
+#                             "CHAR_VDESC": "Solid HPL",
+#                             "DELETE_FLAG": "",
+#                             "CHANGED_DATE": "2025-10-08",
+#                             "CHANGED_TIME": "08:20:38",
+#                             "CHANGED_BY": "SBP",
+#                             "CREATED_DATE": "2025-10-08",
+#                             "CREATED_TIME": "08:20:38",
+#                             "CREATED_BY": "SBP"
+#                         },
+#                         {
+#                             "CHAR_VALUE": "NATVENEER",
+#                             "CHAR_VDESC": "Natural Veneer",
+#                             "DELETE_FLAG": "",
+#                             "CHANGED_DATE": "2025-10-08",
+#                             "CHANGED_TIME": "08:20:38",
+#                             "CHANGED_BY": "SBP",
+#                             "CREATED_DATE": "2025-10-08",
+#                             "CREATED_TIME": "08:20:38",
+#                             "CREATED_BY": "SBP"
+#                         },
+#                         {
+#                             "CHAR_VALUE": "GLASS1",
+#                             "CHAR_VDESC": "Glass",
+#                             "DELETE_FLAG": "X",
+#                             "CHANGED_DATE": "2025-10-08",
+#                             "CHANGED_TIME": "08:20:38",
+#                             "CHANGED_BY": "SBP",
+#                             "CREATED_DATE": "2025-10-08",
+#                             "CREATED_TIME": "08:20:38",
+#                             "CREATED_BY": "SBP"
+#                         }
+#                     ]
+#                 }
+#             ]
+#         },
+#         {
+#             "INT_CLS_NUMBER": 2,
+#             "CLASS_TYPE": "",
+#             "CLASS": "",
+#             "ZDESC": "",
+#             "DELETE_FLAG": "",
+#             "CHANGED_DATE": "",
+#             "CHANGED_TIME": "",
+#             "CHANGED_BY": "",
+#             "CREATED_DATE": "",
+#             "CREATED_TIME": "",
+#             "CREATED_BY": "",
+#             "CLASS_CHAR": [
+#                 {
+#                     "INT_CHAR": 1906,
+#                     "CHAR_NAME": "",
+#                     "CHAR_DESC": "",
+#                     "CHAR_GROUP": "",
+#                     "CHAR_DATATYPE": "",
+#                     "CHAR_CATEGORY": "",
+#                     "MULTI_CHAR": "",
+#                     "ENTRY_REQ": "",
+#                     "DELETE_FLAG": "",
+#                     "CHANGED_DATE": "",
+#                     "CHANGED_TIME": "",
+#                     "CHANGED_BY": "",
+#                     "CREATED_DATE": "",
+#                     "CREATED_TIME": "",
+#                     "CREATED_BY": "",
+#                     "CHAR_VALUES": [
+#                         {
+#                             "CHAR_VALUE": "GLASS",
+#                             "CHAR_VDESC": "Glass",
+#                             "DELETE_FLAG": "",
+#                             "CHANGED_DATE": "2025-10-08",
+#                             "CHANGED_TIME": "08:20:38",
+#                             "CHANGED_BY": "SBP",
+#                             "CREATED_DATE": "2025-10-08",
+#                             "CREATED_TIME": "08:20:38",
+#                             "CREATED_BY": "SBP"
+#                         },
+#                         {
+#                             "CHAR_VALUE": "SOLIDHPL",
+#                             "CHAR_VDESC": "Solid HPL",
+#                             "DELETE_FLAG": "",
+#                             "CHANGED_DATE": "2025-10-08",
+#                             "CHANGED_TIME": "08:20:38",
+#                             "CHANGED_BY": "SBP",
+#                             "CREATED_DATE": "2025-10-08",
+#                             "CREATED_TIME": "08:20:38",
+#                             "CREATED_BY": "SBP"
+#                         },
+#                         {
+#                             "CHAR_VALUE": "NATVENEER",
+#                             "CHAR_VDESC": "Natural Veneer",
+#                             "DELETE_FLAG": "",
+#                             "CHANGED_DATE": "2025-10-08",
+#                             "CHANGED_TIME": "08:20:38",
+#                             "CHANGED_BY": "SBP",
+#                             "CREATED_DATE": "2025-10-08",
+#                             "CREATED_TIME": "08:20:38",
+#                             "CREATED_BY": "SBP"
+#                         },
+#                         {
+#                             "CHAR_VALUE": "GLASS1",
+#                             "CHAR_VDESC": "Glass",
+#                             "DELETE_FLAG": "X",
+#                             "CHANGED_DATE": "2025-10-08",
+#                             "CHANGED_TIME": "08:20:38",
+#                             "CHANGED_BY": "SBP",
+#                             "CREATED_DATE": "2025-10-08",
+#                             "CREATED_TIME": "08:20:38",
+#                             "CREATED_BY": "SBP"
+#                         }
+#                     ]
+#                 }
+#             ]
+#         },
+#         {
+#             "INT_CLS_NUMBER": 3,
+#             "CLASS_TYPE": "",
+#             "CLASS": "",
+#             "ZDESC": "",
+#             "DELETE_FLAG": "",
+#             "CHANGED_DATE": "",
+#             "CHANGED_TIME": "",
+#             "CHANGED_BY": "",
+#             "CREATED_DATE": "",
+#             "CREATED_TIME": "",
+#             "CREATED_BY": "",
+#             "CLASS_CHAR": [
+#                 {
+#                     "INT_CHAR": 1906,
+#                     "CHAR_NAME": "",
+#                     "CHAR_DESC": "",
+#                     "CHAR_GROUP": "",
+#                     "CHAR_DATATYPE": "",
+#                     "CHAR_CATEGORY": "",
+#                     "MULTI_CHAR": "",
+#                     "ENTRY_REQ": "",
+#                     "DELETE_FLAG": "",
+#                     "CHANGED_DATE": "",
+#                     "CHANGED_TIME": "",
+#                     "CHANGED_BY": "",
+#                     "CREATED_DATE": "",
+#                     "CREATED_TIME": "",
+#                     "CREATED_BY": "",
+#                     "CHAR_VALUES": [
+#                         {
+#                             "CHAR_VALUE": "GLASS",
+#                             "CHAR_VDESC": "Glass",
+#                             "DELETE_FLAG": "",
+#                             "CHANGED_DATE": "2025-10-08",
+#                             "CHANGED_TIME": "08:20:38",
+#                             "CHANGED_BY": "SBP",
+#                             "CREATED_DATE": "2025-10-08",
+#                             "CREATED_TIME": "08:20:38",
+#                             "CREATED_BY": "SBP"
+#                         },
+#                         {
+#                             "CHAR_VALUE": "SOLIDHPL",
+#                             "CHAR_VDESC": "Solid HPL",
+#                             "DELETE_FLAG": "",
+#                             "CHANGED_DATE": "2025-10-08",
+#                             "CHANGED_TIME": "08:20:38",
+#                             "CHANGED_BY": "SBP",
+#                             "CREATED_DATE": "2025-10-08",
+#                             "CREATED_TIME": "08:20:38",
+#                             "CREATED_BY": "SBP"
+#                         },
+#                         {
+#                             "CHAR_VALUE": "NATVENEER",
+#                             "CHAR_VDESC": "Natural Veneer",
+#                             "DELETE_FLAG": "",
+#                             "CHANGED_DATE": "2025-10-08",
+#                             "CHANGED_TIME": "08:20:38",
+#                             "CHANGED_BY": "SBP",
+#                             "CREATED_DATE": "2025-10-08",
+#                             "CREATED_TIME": "08:20:38",
+#                             "CREATED_BY": "SBP"
+#                         },
+#                         {
+#                             "CHAR_VALUE": "GLASS1",
+#                             "CHAR_VDESC": "Glass",
+#                             "DELETE_FLAG": "X",
+#                             "CHANGED_DATE": "2025-10-08",
+#                             "CHANGED_TIME": "08:20:38",
+#                             "CHANGED_BY": "SBP",
+#                             "CREATED_DATE": "2025-10-08",
+#                             "CREATED_TIME": "08:20:38",
+#                             "CREATED_BY": "SBP"
+#                         }
+#                     ]
+#                 }
+#             ]
+#         }
+#     ]
+# }
+
+
+
+POST http://localhost:4004/odata/v4/catalog/insertAssComp
+Content-Type: application/json
+
+{
+    "Assembly":[
+{
+"MANDT": "100",
+"LOCATION_ID": "L001",
+"ASSEMBLY": "ENGINE_ASSY_001",
+"SUB_COMP": "PISTON_001",
+"VALID_FROM": "2024-01-01",
+"VALID_TO": "9999-12-31",
+"COMP_TYPE": "RAW",
+"PROD_DESC": "Engine Assembly",
+"COMPONENT_QTY": "4",
+"UOM": 1,
+"CRITICAL_COMP": "X",
+"CHANGED_DATE": "2024-06-01",
+"CHANGED_TIME": "10:30:00",
+"CHANGED_BY": "ADMIN",
+"CREATED_DATE": "2024-01-01",
+"CREATED_TIME": "09:00:00",
+"CREATED_BY": "ADMIN"
+},
+{
+"MANDT": "100",
+"LOCATION_ID": "L002",
+"ASSEMBLY": "ENGINE_ASSY_001",
+"SUB_COMP": "CRANKSHAFT_001",
+"VALID_FROM": "2024-01-01",
+"VALID_TO": "9999-12-31",
+"COMP_TYPE": "SEMI",
+"PROD_DESC": "Crankshaft Component",
+"COMPONENT_QTY": "1",
+"UOM": 1,
+"CRITICAL_COMP": "",
+"CHANGED_DATE": "2024-06-02",
+"CHANGED_TIME": "11:15:00",
+"CHANGED_BY": "USER1",
+"CREATED_DATE": "2024-01-02",
+"CREATED_TIME": "08:45:00",
+"CREATED_BY": "USER1"
+},
+{
+"MANDT": "100",
+"LOCATION_ID": "L003",
+"ASSEMBLY": "CAR_BODY_001",
+"SUB_COMP": "DOOR_PANEL_001",
+"VALID_FROM": "2024-02-01",
+"VALID_TO": "9999-12-31",
+"COMP_TYPE": "FIN",
+"PROD_DESC": "Car Body Assembly",
+"COMPONENT_QTY": "4",
+"UOM": 1,
+"CRITICAL_COMP": "X",
+"CHANGED_DATE": "2024-06-03",
+"CHANGED_TIME": "14:20:00",
+"CHANGED_BY": "USER2",
+"CREATED_DATE": "2024-02-01",
+"CREATED_TIME": "10:10:00",
+"CREATED_BY": "USER2"
+}
+]
+}

@@ -1,0 +1,2086 @@
+{
+ "meta": {
+  "creator": "cds-dk 9.2.0"
+ },
+ "$version": "2.0",
+ "definitions": {
+  "config_products_anal": {
+   "kind": "service",
+   "@cds.external": true,
+   "@m.IsDefaultEntityContainer": "true"
+  },
+  "config_products_anal.getWeeklySalesData": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.semantics": "aggregate",
+   "elements": {
+    "ID__": {
+     "key": true,
+     "type": "cds.LargeString",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false",
+     "notNull": true
+    },
+    "SALES_DOC": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Sales Doc."
+    },
+    "SALESDOC_ITEM": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "SalesDoc. Item"
+    },
+    "REF_PRODID": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Config Products"
+    },
+    "PRODUCT_ID": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Product ID"
+    },
+    "UNIQUE_ID": {
+     "type": "cds.Integer",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Unique ID"
+    },
+    "PRIMARY_ID": {
+     "type": "cds.Integer",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Primary ID"
+    },
+    "DOC_CREATEDDATE": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Doc. Created Date",
+     "@sap.display.format": "Date"
+    },
+    "SCHEDULELINE_NUM": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Schedule Line Number"
+    },
+    "REASON_REJ": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reason Rej"
+    },
+    "UOM": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.label": "UOM"
+    },
+    "CONFIRMED_QTY": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Confirmed Qty."
+    },
+    "ORD_QTY": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Ord Qty"
+    },
+    "MAT_AVAILDATE": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Mat. Avail Date",
+     "@sap.display.format": "Date"
+    },
+    "WEEK_DATE": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date",
+     "@sap.display.format": "Date"
+    },
+    "YEAR": {
+     "type": "cds.LargeString",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Year"
+    },
+    "QUARTER": {
+     "type": "cds.LargeString",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Quarter"
+    },
+    "MONTH": {
+     "type": "cds.LargeString",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Month"
+    },
+    "PERIODDESC": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Period Desc"
+    },
+    "NET_VALUE": {
+     "type": "cds.Decimal",
+     "precision": 15,
+     "scale": 2,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Net Value"
+    },
+    "CUSTOMER_GROUP": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Customer Group"
+    },
+    "LOCATION_ID": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Demand Location"
+    },
+    "SALE_LOCATION": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Sale Location"
+    },
+    "PLAN_LOC": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Plan Location"
+    },
+    "FACTORY_LOC": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Factory Location"
+    },
+    "SEEDORD_CHK": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Seed Order Chk"
+    },
+    "SALES_ORG": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Sales Org"
+    },
+    "DISTR_CHANNEL": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "DISTR Channel"
+    },
+    "DIVISION": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Division"
+    },
+    "SAL_DOCU_TYPE": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Sales Doc Type"
+    },
+    "ITEM_CREATED_DATE": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Item Created Date",
+     "@sap.display.format": "Date"
+    },
+    "ITEM_CHANGE_DATE": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Item Change Date",
+     "@sap.display.format": "Date"
+    },
+    "IBP_CUSTOMER": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "IBP Customer"
+    },
+    "RELEVENT_FOR_PLAN": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Relevent For Plan"
+    },
+    "ON_HAND_STOCK": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "On Hand Stock"
+    },
+    "IN_TRANSIT": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "In Transit"
+    },
+    "SHIP_FROM_LOC": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Ship from Location"
+    },
+    "CHANGED_DATE": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Changed Date",
+     "@sap.display.format": "Date"
+    },
+    "CHANGED_BY": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Changed By"
+    },
+    "CREATED_DATE": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Created Date",
+     "@sap.display.format": "Date"
+    },
+    "CREATED_BY": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Created By"
+    },
+    "CHANGED_TIME": {
+     "type": "cds.Time",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Changed Time"
+    },
+    "CREATED_TIME": {
+     "type": "cds.Time",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Created Time"
+    },
+    "RESERVE_FIELD1": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 1"
+    },
+    "RESERVE_FIELD2": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 2"
+    },
+    "RESERVE_FIELD3": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 3"
+    },
+    "RESERVE_FIELD4": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 4"
+    },
+    "RESERVE_FIELD5": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 5"
+    }
+   }
+  },
+  "config_products_anal.getDemandAndForecast": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.semantics": "aggregate",
+   "elements": {
+    "ID__": {
+     "key": true,
+     "type": "cds.LargeString",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false",
+     "notNull": true
+    },
+    "LOCATION_ID": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Demand Location",
+     "notNull": true
+    },
+    "PRODUCT_ID": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Product ID",
+     "notNull": true
+    },
+    "UNIQUE_ID": {
+     "type": "cds.Integer",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Unique ID",
+     "notNull": true
+    },
+    "CHAR_NUM": {
+     "type": "cds.String",
+     "length": 100,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Characteristic ID",
+     "notNull": true
+    },
+    "CHARVAL_NUM": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Characteristic Value ID",
+     "notNull": true
+    },
+    "CHAR_DESC": {
+     "type": "cds.String",
+     "length": 160,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Characteristic Description"
+    },
+    "CHAR_NAME": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Characteristic Name"
+    },
+    "CHARVAL_DESC": {
+     "type": "cds.String",
+     "length": 160,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Characteristic Value Description"
+    },
+    "MODEL_VERSION": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.label": "Model Verison"
+    },
+    "VERSION": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "Version"
+    },
+    "SCENARIO": {
+     "type": "cds.String",
+     "length": 32,
+     "@sap.label": "Scenario"
+    },
+    "VERSION_NAME": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.label": "Version Name"
+    },
+    "SCENARIO_NAME": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.label": "Scenario Name"
+    },
+    "WEEK_PERIODDESC": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Period Desc"
+    },
+    "LOCATION_DESC": {
+     "type": "cds.String",
+     "length": 30,
+     "@sap.label": "Location Description"
+    },
+    "PROD_DESC": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Product Description"
+    },
+    "WEEK_DATE": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date",
+     "@sap.display.format": "Date"
+    },
+    "YEAR": {
+     "type": "cds.Integer",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Year"
+    },
+    "QUARTER": {
+     "type": "cds.String",
+     "length": 7,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Quarter"
+    },
+    "MONTH": {
+     "type": "cds.LargeString",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Month"
+    },
+    "TYPE": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Type",
+     "notNull": true
+    },
+    "QUANTITY": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Quantity"
+    },
+    "ACTUAL_QTY": {
+     "type": "cds.Decimal",
+     "precision": 18,
+     "scale": 3,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Actual Quantity"
+    },
+    "PERCENTAGE": {
+     "type": "cds.Decimal",
+     "precision": 18,
+     "scale": 3,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Percentage"
+    },
+    "FORECAST_SALES_PERCENTAGE": {
+     "type": "cds.Decimal",
+     "precision": 18,
+     "scale": 3,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Forecast Sales Percent"
+    },
+    "YEAR_MONTH": {
+     "type": "cds.LargeString",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Year Month"
+    }
+   }
+  },
+  "config_products_anal.getUnqCharQty": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.semantics": "aggregate",
+   "elements": {
+    "ID__": {
+     "key": true,
+     "type": "cds.LargeString",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false",
+     "notNull": true
+    },
+    "LOCATION_ID": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Demand Location"
+    },
+    "PRODUCT_ID": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Partial Product"
+    },
+    "REF_PRODID": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Config Products"
+    },
+    "WEEK_DATE": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date",
+     "@sap.display.format": "Date"
+    },
+    "YEAR": {
+     "type": "cds.LargeString",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Year"
+    },
+    "QUARTER": {
+     "type": "cds.LargeString",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Quarter"
+    },
+    "MONTH": {
+     "type": "cds.LargeString",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Month"
+    },
+    "CIR_ID": {
+     "type": "cds.Integer",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "CIR ID"
+    },
+    "MODEL_VERSION": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Model Version"
+    },
+    "VERSION": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Version"
+    },
+    "SCENARIO": {
+     "type": "cds.String",
+     "length": 32,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Scenario"
+    },
+    "VERSION_NAME": {
+     "type": "cds.String",
+     "length": 100,
+     "@sap.label": "VERSION Name"
+    },
+    "SCENARIO_NAME": {
+     "type": "cds.String",
+     "length": 100,
+     "@sap.label": "SCENARIO Name"
+    },
+    "UNIQUE_ID": {
+     "type": "cds.Integer",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Unique ID"
+    },
+    "CIR_QTY": {
+     "type": "cds.Integer",
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Forecast Order Quantity"
+    },
+    "CIR_QTY_AVG": {
+     "type": "cds.Integer",
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Forecast Order Quantity MAX"
+    },
+    "CHAR_DESC": {
+     "type": "cds.String",
+     "length": 160,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Characteristic Description"
+    },
+    "CHARVAL_DESC": {
+     "type": "cds.String",
+     "length": 160,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Characteristic Value Description"
+    },
+    "CHAR_NUM": {
+     "type": "cds.String",
+     "length": 100,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Characteristic"
+    },
+    "CHAR_NAME": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Characteristic Name"
+    },
+    "CHARVAL_NUM": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Characteristic Value"
+    },
+    "CHAR_VALUE": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Characteristic Value Name"
+    },
+    "PERIODDESC": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.label": "Period Description"
+    },
+    "RESERVE_FIELD1": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 1"
+    },
+    "RESERVE_FIELD2": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 2"
+    },
+    "RESERVE_FIELD3": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 3"
+    },
+    "RESERVE_FIELD4": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 4"
+    },
+    "RESERVE_FIELD5": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 5"
+    },
+    "CIR_QTY_TOT": {
+     "type": "cds.Integer",
+     "@sap.label": "CIR_QTY_TOT"
+    },
+    "CIR_QTY_PERCENT": {
+     "type": "cds.Decimal",
+     "precision": 19,
+     "scale": 6,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Forecast Order Percentage"
+    }
+   }
+  },
+  "config_products_anal.getSalesUnqData": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.semantics": "aggregate",
+   "elements": {
+    "ID__": {
+     "key": true,
+     "type": "cds.LargeString",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false",
+     "notNull": true
+    },
+    "SALES_DOC": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Sales Doc."
+    },
+    "SALESDOC_ITEM": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "SalesDoc. Item"
+    },
+    "REF_PRODID": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Config Products"
+    },
+    "PRODUCT_ID": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Partial Product"
+    },
+    "UNIQUE_ID": {
+     "type": "cds.Integer",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Unique ID"
+    },
+    "PRIMARY_ID": {
+     "type": "cds.Integer",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Primary ID"
+    },
+    "SCHEDULELINE_NUM": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Schedule Line Number"
+    },
+    "REASON_REJ": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reason Rej"
+    },
+    "CONFIRMED_QTY": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Confirmed Quantity"
+    },
+    "ORD_QTY": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Ord Qty"
+    },
+    "ORD_QTY_MAX": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Ord Qty Max"
+    },
+    "MAT_AVAILDATE": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Mat. Avail Date",
+     "@sap.display.format": "Date"
+    },
+    "WEEK_DATE": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date",
+     "@sap.display.format": "Date"
+    },
+    "YEAR": {
+     "type": "cds.LargeString",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Year"
+    },
+    "QUARTER": {
+     "type": "cds.LargeString",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Quarter"
+    },
+    "MONTH": {
+     "type": "cds.LargeString",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Month"
+    },
+    "PERIODDESC": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Period Desc"
+    },
+    "CUSTOMER_GROUP": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Customer Group"
+    },
+    "LOCATION_ID": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Demand Location"
+    },
+    "SEEDORD_CHK": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Seed Order Chk"
+    },
+    "SALES_ORG": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Sales Org"
+    },
+    "DISTR_CHANNEL": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.label": "DISTR_CHANNEL"
+    },
+    "DIVISION": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Division"
+    },
+    "RESERVE_FIELD1": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 1"
+    },
+    "RESERVE_FIELD2": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 2"
+    },
+    "RESERVE_FIELD3": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 3"
+    },
+    "RESERVE_FIELD4": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 4"
+    },
+    "RESERVE_FIELD5": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 5"
+    },
+    "UNIQUE_DESC": {
+     "type": "cds.String",
+     "length": 100,
+     "@sap.label": "UNIQUE_DESC"
+    },
+    "CHAR_NUM": {
+     "type": "cds.String",
+     "length": 100,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Characteristic ID"
+    },
+    "CHAR_NAME": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.label": "CHAR_NAME"
+    },
+    "CHAR_DESC": {
+     "type": "cds.String",
+     "length": 160,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Characteristic Description"
+    },
+    "CHARVAL_NUM": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.label": "CHARVAL_NUM"
+    },
+    "CHAR_VALUE": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.label": "CHAR_VALUE"
+    },
+    "CHARVAL_DESC": {
+     "type": "cds.String",
+     "length": 160,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Characteristic Value Description"
+    },
+    "UID_CHAR_RATE": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 2,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Uid Characteristic Rate"
+    },
+    "VALID_FROM": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Valid From",
+     "@sap.display.format": "Date"
+    },
+    "VALID_TO": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Valid To",
+     "@sap.display.format": "Date"
+    },
+    "CHAR_TOT_ORD_QTY": {
+     "type": "cds.Decimal",
+     "precision": 18,
+     "scale": 3,
+     "@sap.label": "CHAR_TOT_ORD_QTY"
+    },
+    "CHAR_TOT_CONFIRMED_QTY": {
+     "type": "cds.Decimal",
+     "precision": 18,
+     "scale": 3,
+     "@sap.label": "CHAR_TOT_CONFIRMED_QTY"
+    },
+    "ORD_QTY_PERCENT": {
+     "type": "cds.Decimal",
+     "precision": 38,
+     "scale": 22,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Ord Percentage"
+    },
+    "ASONFIRMED_QTY_PERCENT": {
+     "type": "cds.Decimal",
+     "precision": 38,
+     "scale": 22,
+     "@sap.label": "ASONFIRMED_QTY_PERCENT"
+    }
+   }
+  },
+  "config_products_anal.getCIRLogData": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.semantics": "aggregate",
+   "elements": {
+    "ID__": {
+     "key": true,
+     "type": "cds.LargeString",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false",
+     "notNull": true
+    },
+    "MANDT": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.aggregation.role": "dimension",
+     "notNull": true
+    },
+    "MATNR": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "notNull": true
+    },
+    "CIR_NUM": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "notNull": true
+    },
+    "PLANT": {
+     "type": "cds.String",
+     "length": 34,
+     "@sap.aggregation.role": "dimension",
+     "notNull": true
+    },
+    "UNIQUE_ID": {
+     "type": "cds.Integer",
+     "@sap.aggregation.role": "dimension",
+     "notNull": true
+    },
+    "WEEK_DATE": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.aggregation.role": "dimension",
+     "notNull": true
+    },
+    "CUST_MATERIAL": {
+     "type": "cds.String",
+     "length": 35,
+     "@sap.aggregation.role": "dimension",
+     "notNull": true
+    },
+    "YEAR": {
+     "type": "cds.LargeString",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Year"
+    },
+    "QUARTER": {
+     "type": "cds.LargeString",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Quarter"
+    },
+    "MONTH": {
+     "type": "cds.LargeString",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Month"
+    },
+    "USER_ID": {
+     "type": "cds.String",
+     "length": 241,
+     "@sap.aggregation.role": "dimension"
+    },
+    "QUANTITY": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3,
+     "@sap.aggregation.role": "measure"
+    },
+    "MSG_TYP": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.aggregation.role": "dimension"
+    },
+    "MESSAGE": {
+     "type": "cds.String",
+     "length": 220,
+     "@sap.aggregation.role": "dimension"
+    },
+    "W_DATE": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "Date"
+    },
+    "RESERVE_FIELD1": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 1"
+    },
+    "RESERVE_FIELD2": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 2"
+    },
+    "RESERVE_FIELD3": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 3"
+    },
+    "RESERVE_FIELD4": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 4"
+    },
+    "RESERVE_FIELD5": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 5"
+    }
+   }
+  },
+  "config_products_anal.getVendedCapacity": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.semantics": "aggregate",
+   "elements": {
+    "ID__": {
+     "key": true,
+     "type": "cds.LargeString",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false",
+     "notNull": true
+    },
+    "LOCATION_ID": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Location ID"
+    },
+    "PRODUCT_ID": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Product ID"
+    },
+    "LINE_ID": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Line ID"
+    },
+    "RESTRICTION": {
+     "type": "cds.String",
+     "length": 30,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Restriction"
+    },
+    "WEEK_DATE": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date",
+     "@sap.display.format": "Date"
+    },
+    "MODEL_VERSION": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Model Version"
+    },
+    "VERSION": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Version"
+    },
+    "SCENARIO": {
+     "type": "cds.String",
+     "length": 32,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Scenario"
+    },
+    "YEAR": {
+     "type": "cds.LargeString",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Year"
+    },
+    "QUARTER": {
+     "type": "cds.LargeString",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Quarter"
+    },
+    "MONTH": {
+     "type": "cds.LargeString",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Month"
+    },
+    "LOCATION_DESC": {
+     "type": "cds.String",
+     "length": 30,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Location Description"
+    },
+    "PROD_DESC": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Product Description"
+    },
+    "LINE_DESC": {
+     "type": "cds.String",
+     "length": 30,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Line Description"
+    },
+    "RTR_DESC": {
+     "type": "cds.String",
+     "length": 30,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Restriction Description"
+    },
+    "VERSION_NAME": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Version Name"
+    },
+    "SCENARIO_NAME": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Scenario Name"
+    },
+    "PLANNED_QTY": {
+     "type": "cds.Decimal",
+     "precision": 18,
+     "scale": 3,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Restriction Quantity"
+    },
+    "ORD_QTY": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Sales Order Quantity"
+    },
+    "RTR_CAP": {
+     "type": "cds.Integer",
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Restriction Capacity"
+    },
+    "OPEN_RTR_QTY": {
+     "type": "cds.Decimal",
+     "precision": 20,
+     "scale": 3,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Open Restriction Quantity"
+    },
+    "DIFF_QTY": {
+     "type": "cds.Decimal",
+     "precision": 20,
+     "scale": 3,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Restriction Exceeded By"
+    },
+    "PERIODDESC": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.label": "Period Description"
+    },
+    "RESERVE_FIELD1": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 1"
+    },
+    "RESERVE_FIELD2": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 2"
+    },
+    "RESERVE_FIELD3": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 3"
+    },
+    "RESERVE_FIELD4": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 4"
+    },
+    "RESERVE_FIELD5": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Reserve Field 5"
+    }
+   }
+  },
+  "config_products_anal.getFinalOptionPercentages": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "LOCATION_ID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true
+    },
+    "PRODUCT_ID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 40,
+     "notNull": true
+    },
+    "CUSTOMER_GROUP": {
+     "key": true,
+     "type": "cds.String",
+     "length": 40,
+     "notNull": true
+    },
+    "MODEL_VERSION": {
+     "key": true,
+     "type": "cds.String",
+     "length": 20,
+     "notNull": true
+    },
+    "CHAR_NUM": {
+     "key": true,
+     "type": "cds.String",
+     "length": 100,
+     "notNull": true
+    },
+    "CHAR_NAME": {
+     "key": true,
+     "type": "cds.String",
+     "length": 100,
+     "notNull": true
+    },
+    "CHARVAL_NUM": {
+     "key": true,
+     "type": "cds.String",
+     "length": 80,
+     "notNull": true
+    },
+    "VERSION": {
+     "key": true,
+     "type": "cds.String",
+     "length": 10,
+     "notNull": true
+    },
+    "SCENARIO": {
+     "key": true,
+     "type": "cds.String",
+     "length": 32,
+     "notNull": true
+    },
+    "TYPE": {
+     "key": true,
+     "type": "cds.Integer",
+     "notNull": true
+    },
+    "OPT_PERCENT": {
+     "type": "cds.Decimal",
+     "precision": 5,
+     "scale": 2
+    },
+    "OPT_QTY": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3
+    },
+    "CHAR_DESC": {
+     "type": "cds.String",
+     "length": 160
+    },
+    "CHAR_TYPE": {
+     "type": "cds.String",
+     "length": 4
+    },
+    "CHARVAL_DESC": {
+     "type": "cds.String",
+     "length": 160
+    },
+    "VERSION_NAME": {
+     "type": "cds.String",
+     "length": 50
+    },
+    "SCENARIO_NAME": {
+     "type": "cds.String",
+     "length": 50
+    },
+    "LOCATION_DESC": {
+     "type": "cds.String",
+     "length": 30
+    },
+    "PROD_DESC": {
+     "type": "cds.String",
+     "length": 40
+    },
+    "KEY_FIG_ID": {
+     "type": "cds.Integer"
+    },
+    "KEY_FIG_DESC": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "DISPLAY_ORDER": {
+     "type": "cds.Integer"
+    },
+    "PRIORITY_ORDER": {
+     "type": "cds.Integer"
+    },
+    "CALENDAR_WEEK": {
+     "type": "cds.String",
+     "length": 50
+    },
+    "TELESCOPIC_WEEK": {
+     "type": "cds.String",
+     "length": 50
+    },
+    "WEEK_STARTDATE": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date"
+    },
+    "WEEK_ENDDATE": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date"
+    },
+    "PERIODSTART": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date"
+    },
+    "PERIODEND": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date"
+    },
+    "LOCK": {
+     "type": "cds.Boolean"
+    },
+    "COMMENTS": {
+     "type": "cds.LargeString"
+    },
+    "USER": {
+     "type": "cds.LargeString"
+    },
+    "OLD_VALUE": {
+     "type": "cds.Decimal",
+     "precision": 5,
+     "scale": 2
+    },
+    "DATE_TIME": {
+     "type": "cds.DateTime",
+     "@odata.Type": "Edm.DateTimeOffset"
+    }
+   }
+  },
+  "config_products_anal.getOptFilterdata": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.semantics": "aggregate",
+   "elements": {
+    "ID__": {
+     "key": true,
+     "type": "cds.LargeString",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false",
+     "notNull": true
+    },
+    "LOCATION_ID": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Location",
+     "notNull": true
+    },
+    "PRODUCT_ID": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Product",
+     "notNull": true
+    },
+    "LOCATION_DESC": {
+     "type": "cds.String",
+     "length": 30,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Location Description"
+    },
+    "PROD_DESC": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Product Description"
+    },
+    "CUSTOMER_GROUP": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Customer Group",
+     "notNull": true
+    },
+    "CHAR_NUM": {
+     "type": "cds.String",
+     "length": 100,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Characteristic",
+     "notNull": true
+    },
+    "CHARVAL_NUM": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Characteristic Value",
+     "notNull": true
+    },
+    "CHAR_DESC": {
+     "type": "cds.String",
+     "length": 160,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Characteristic Description"
+    },
+    "CHAR_NAME": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.label": "Characteristic Name"
+    },
+    "CHARVAL_DESC": {
+     "type": "cds.String",
+     "length": 160,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Characteristic Value Description"
+    },
+    "MODEL_VERSION": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.label": "Model Version",
+     "notNull": true
+    },
+    "VERSION": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Version",
+     "notNull": true
+    },
+    "VERSION_NAME": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Version Name"
+    },
+    "SCENARIO_NAME": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Scenario Name"
+    },
+    "SCENARIO": {
+     "type": "cds.String",
+     "length": 32,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Scenario",
+     "notNull": true
+    }
+   }
+  },
+  "config_products_anal.getLocProdData": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.semantics": "aggregate",
+   "elements": {
+    "ID__": {
+     "key": true,
+     "type": "cds.LargeString",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false",
+     "notNull": true
+    },
+    "PRODUCT_ID": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Product"
+    },
+    "LOCATION_ID": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Location"
+    },
+    "PROD_DESC": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Product Description"
+    },
+    "PROD_TYPE": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.label": "Product Type"
+    },
+    "LOCATION_DESC": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Location Description"
+    }
+   }
+  },
+  "config_products_anal.getComponentReqData": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.semantics": "aggregate",
+   "elements": {
+    "ID__": {
+     "key": true,
+     "type": "cds.LargeString",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false",
+     "notNull": true
+    },
+    "LOCATION_ID": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Location"
+    },
+    "PRODUCT_ID": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Product"
+    },
+    "COMPONENT": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Component"
+    },
+    "FACTORY_LOC": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Factory Location",
+     "notNull": true
+    },
+    "VERSION": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Version"
+    },
+    "SCENARIO": {
+     "type": "cds.String",
+     "length": 32,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Scenario"
+    },
+    "COMP_DESC": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Component Description"
+    },
+    "COMPAVAIL_QTY": {
+     "type": "cds.Integer",
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Component Avail Quantity"
+    },
+    "COMP_QTY": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Component Quantity"
+    },
+    "WEEK_DATE": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date",
+     "@sap.display.format": "Date"
+    }
+   }
+  },
+  "config_products_anal.getAssemblyCompQty": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.semantics": "aggregate",
+   "elements": {
+    "ID__": {
+     "key": true,
+     "type": "cds.LargeString",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false",
+     "notNull": true
+    },
+    "LOCATION_ID": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Location"
+    },
+    "LOCATION_DESC": {
+     "type": "cds.String",
+     "length": 100,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Location Description"
+    },
+    "FACTORY_LOCATION_DESC": {
+     "type": "cds.String",
+     "length": 100
+    },
+    "PRODUCT_ID": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Product"
+    },
+    "PROD_DESC": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Product Description"
+    },
+    "ITEM_NUM": {
+     "type": "cds.String",
+     "length": 6,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Item Number"
+    },
+    "ASSEMBLY": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Assembly"
+    },
+    "ASM_DESC": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Assembly Description"
+    },
+    "CALENDAR_WEEK": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.label": "Calendar Week"
+    },
+    "TELESCOPIC_WEEK": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.label": "Telescopic Week"
+    },
+    "WEEK_STARTDATE": {
+     "type": "cds.Date",
+     "@sap.label": "Week Start Date",
+     "@sap.display.format": "Date"
+    },
+    "WEEK_ENDDATE": {
+     "type": "cds.Date",
+     "@sap.label": "Week End Date",
+     "@sap.display.format": "Date"
+    },
+    "VERSION_NAME": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.label": "Version Name"
+    },
+    "SCENARIO_NAME": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.label": "Scenario Name"
+    },
+    "MODEL_VERSION": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Model Version"
+    },
+    "VERSION": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Version"
+    },
+    "SCENARIO": {
+     "type": "cds.String",
+     "length": 32,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Scenario"
+    },
+    "RULE_TYPE": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Rule Type"
+    },
+    "REF_PRODID": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Config Product"
+    },
+    "FACTORY_LOC": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Factory Location"
+    },
+    "MRP_GROUP": {
+     "type": "cds.String",
+     "length": 4
+    },
+    "REQ_TYPE": {
+     "type": "cds.String",
+     "length": 2
+    },
+    "TYPE": {
+     "type": "cds.String",
+     "length": 2
+    },
+    "UNIQUE_ID": {
+     "type": "cds.LargeString"
+    },
+    "ASMB_QTY": {
+     "type": "cds.Decimal",
+     "precision": 18,
+     "scale": 2,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Component Quantity"
+    },
+    "CIR_QTY": {
+     "type": "cds.Decimal",
+     "precision": 18,
+     "scale": 2,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Forecast Order Quantity"
+    },
+    "CIR_ASMB_QTY": {
+     "type": "cds.Decimal",
+     "precision": 18,
+     "scale": 2,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Assembly Requirements"
+    },
+    "ACTUAL_QTY": {
+     "type": "cds.Decimal",
+     "precision": 18,
+     "scale": 2
+    },
+    "TOTAL_QTY": {
+     "type": "cds.Decimal",
+     "precision": 18,
+     "scale": 2
+    },
+    "PROD_DEM": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 0
+    },
+    "COEFFICIENTS": {
+     "type": "cds.Decimal",
+     "precision": 34,
+     "scale": 0
+    }
+   }
+  },
+  "config_products_anal.getTSHistoryCust": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "LOCATION_ID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true
+    },
+    "PRODUCT_ID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 40,
+     "notNull": true
+    },
+    "WEEK_DATE": {
+     "key": true,
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "notNull": true
+    },
+    "GROUP_ID": {
+     "type": "cds.Integer"
+    },
+    "CUSTOMER_GROUP": {
+     "type": "cds.String",
+     "length": 20
+    },
+    "GROUP_COUNT": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3
+    },
+    "GROUP_COUNT_RATE": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 4
+    },
+    "CONFIRMED_QTY_TOT_CONFIRMED": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3
+    }
+   }
+  },
+  "config_products_anal.getProdOrdConsumptionNewAnly": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.semantics": "aggregate",
+   "elements": {
+    "ID__": {
+     "key": true,
+     "type": "cds.LargeString",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false",
+     "notNull": true
+    },
+    "LOCATION_ID": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Location"
+    },
+    "SALES_DOC": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Sales Document"
+    },
+    "SALESDOC_ITEM": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Sales Document Item"
+    },
+    "REF_PRODID": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Config Product"
+    },
+    "PROD_ORDER": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Production Order"
+    },
+    "COMPONENT": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Component"
+    },
+    "MANU_LOC": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Manufacturing Location"
+    },
+    "MAT_PARENT": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Parent"
+    },
+    "COMP_PROCURE_TYPE": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.label": "COMP_PROCURE_TYPE"
+    },
+    "COMP_QTY": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3,
+     "@sap.label": "COMP_QTY"
+    },
+    "ORD_TYPE": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.label": "ORD_TYPE"
+    },
+    "WEEK_DATE": {
+     "type": "cds.Date",
+     "@sap.label": "WEEK_DATE",
+     "@sap.display.format": "Date"
+    },
+    "UNIQUE_ID": {
+     "type": "cds.LargeString",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Unique ID"
+    },
+    "LOCATION_DESC": {
+     "type": "cds.String",
+     "length": 30,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Location Description"
+    },
+    "PROD_DESC": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Product Description"
+    },
+    "CALENDAR_WEEK": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.label": "CALENDAR_WEEK"
+    },
+    "TELESCOPIC_WEEK": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.label": "TELESCOPIC_WEEK"
+    },
+    "CP_PROD_ORD_CONSUMPTION_SUM": {
+     "type": "cds.Decimal",
+     "precision": 18,
+     "scale": 3,
+     "@sap.label": "CP_PROD_ORD_CONSUMPTION_SUM"
+    }
+   }
+  },
+  "config_products_anal.getDMDForecast": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.semantics": "aggregate",
+   "elements": {
+    "ID__": {
+     "key": true,
+     "type": "cds.LargeString",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false",
+     "notNull": true
+    },
+    "LOCATION_ID": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Demand Location"
+    },
+    "PRODUCT_ID": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Product ID"
+    },
+    "UNIQUE_ID": {
+     "type": "cds.Integer",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Unique ID"
+    },
+    "MODEL_VERSION": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.label": "Model Version"
+    },
+    "VERSION": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "Version"
+    },
+    "SCENARIO": {
+     "type": "cds.String",
+     "length": 32,
+     "@sap.label": "Scenario"
+    },
+    "VERSION_NAME": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.label": "Version Name"
+    },
+    "SCENARIO_NAME": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.label": "Scenario Name"
+    },
+    "LOCATION_DESC": {
+     "type": "cds.String",
+     "length": 30,
+     "@sap.label": "Location Description"
+    },
+    "PROD_DESC": {
+     "type": "cds.String",
+     "length": 30,
+     "@sap.label": "Product Description"
+    },
+    "WEEK_DATE": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date",
+     "@sap.display.format": "Date"
+    },
+    "YEAR": {
+     "type": "cds.Integer",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Year"
+    },
+    "WEEK_PERIODDESC": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.label": "Week Period Description"
+    },
+    "QUARTER": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Quarter"
+    },
+    "MONTH": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Week Date Month"
+    },
+    "TYPE": {
+     "type": "cds.String",
+     "length": 17,
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Type"
+    },
+    "QUANTITY": {
+     "type": "cds.Decimal",
+     "precision": 18,
+     "scale": 3,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Quantity"
+    },
+    "ACTUAL_QTY": {
+     "type": "cds.Decimal",
+     "precision": 18,
+     "scale": 3,
+     "@sap.aggregation.role": "measure",
+     "@sap.label": "Actual Quantity"
+    },
+    "YEAR_MONTH": {
+     "type": "cds.LargeString",
+     "@sap.aggregation.role": "dimension",
+     "@sap.label": "Year Month"
+    }
+   }
+  }
+ }
+}

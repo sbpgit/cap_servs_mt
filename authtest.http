@@ -1,0 +1,182 @@
+# POST  http://localhost:4004/odata/v4/catalog/insertSalesOrder
+# Content-Type: application/json
+# Authorization: Basic vcpsteelcase:sbpcorp
+
+# {
+#     "SALESORDER":[
+#         {
+#             "MANDT": "",
+#             "SALES_DOCUMENT": "test1",
+#             "SALES_DOCUMENT_ITEM": 100002,
+#             "DOC_CREATED_DATE": "2025-04-02",
+#             "SCHEDULE_LINE_NO": 1,
+#             "PRODUCT_ID": "VCP_1600",
+#             "MATERIAL_VARIANT": "",
+#             "REASON_4REJECTION": "",
+#             "UOM": "EA",
+#             "CONFIRMED_QTY": 0,
+#             "QTY_UNITS": 11.000,
+#             "PROD_AVAILABILITY_DT": "2025-04-02",
+#             "NET_VALUE": 11000.00,
+#             "CUSTOMER_GROUP": "01",
+#             "LOCATION_ID": "1600",
+#             "SALES_ORG": "1010",
+#             "DISTR_CHANNEL": "10",
+#             "DIVISION": "00",
+#             "SAL_DOCU_TYPE": "TA",
+#             "ITEM_CREATED_DATE": "2024-01-22",
+#             "ITEM_CHANGE_DATE": "2025-04-01",
+#             "OPEN_ORDER": "Y",
+#             "CHARG": "",
+#             "IBP_CUSTOMER": "",
+#             "NOT_PLANNING": "",
+#             "ON_HAND_STOCK": "N",
+#             "IN_TRANSIT": "",
+#             "SHIP_FROM_LOC": "",
+#             "RESERVE_FIELD1": "",
+#             "RESERVE_FIELD2": "",
+#             "RESERVE_FIELD3": "",
+#             "STOCK_LOC": "",
+#             "TRANS_TO_LOC": "",
+#             "TRANS_FROM_LOC": "",
+#             "DELETE_FLAG": "",
+#             "CHANGED_DATE": "2025-04-01",
+#             "CHANGED_TIME": "11:18:04",
+#             "CHANGED_BY": "SBP",
+#             "CREATED_DATE": "2025-03-18",
+#             "CREATED_TIME": "13:56:03",
+#             "CREATED_BY": "SBP",
+#             "ITEMS": [
+#                 {
+#                     "CHARACTERSTIC": "A0435",
+#                     "CHARACTERSTIC_VALUE": "A0435-F0002",
+#                     "PRODUCT_ID": "VCP_1600",
+#                     "PROD_AVAILABILITY_DT": "2025-04-01",
+#                     "CLASS": "VCP_1600",
+#                     "CLASS_NUM": 245,
+#                     "CHARACTERSTIC_NUM": 1185,
+#                     "VALUE_NUM": 0,
+#                     "DELETE_FLAG": "",
+#                     "CHANGED_DATE": "2025-04-01",
+#                     "CHANGED_TIME": "07:40:53",
+#                     "CHANGED_BY": "SBP",
+#                     "CREATED_DATE": "2025-03-26",
+#                     "CREATED_TIME": "08:18:10",
+#                     "CREATED_BY": "SBP"
+#                 },
+#                 {
+#                     "CHARACTERSTIC": "A0573",
+#                     "CHARACTERSTIC_VALUE": "ZZZZ",
+#                     "PRODUCT_ID": "VCP_1600",
+#                     "PROD_AVAILABILITY_DT": "2025-04-01",
+#                     "CLASS": "VCP_1600",
+#                     "CLASS_NUM": 245,
+#                     "CHARACTERSTIC_NUM": 1186,
+#                     "VALUE_NUM": 0,
+#                     "DELETE_FLAG": "",
+#                     "CHANGED_DATE": "2025-04-01",
+#                     "CHANGED_TIME": "07:40:53",
+#                     "CHANGED_BY": "SBP",
+#                     "CREATED_DATE": "2025-03-26",
+#                     "CREATED_TIME": "08:18:10",
+#                     "CREATED_BY": "SBP"
+#                 },
+#                 {
+#                     "CHARACTERSTIC": "A1196",
+#                     "CHARACTERSTIC_VALUE": "ZZZZ",
+#                     "PRODUCT_ID": "VCP_1600",
+#                     "PROD_AVAILABILITY_DT": "2025-04-01",
+#                     "CLASS": "VCP_1600",
+#                     "CLASS_NUM": 245,
+#                     "CHARACTERSTIC_NUM": 1192,
+#                     "VALUE_NUM": 0,
+#                     "DELETE_FLAG": "",
+#                     "CHANGED_DATE": "2025-04-01",
+#                     "CHANGED_TIME": "07:40:53",
+#                     "CHANGED_BY": "SBP",
+#                     "CREATED_DATE": "2025-03-26",
+#                     "CREATED_TIME": "08:18:10",
+#                     "CREATED_BY": "SBP"
+#                 },
+#                 {
+#                     "CHARACTERSTIC": "A8007",
+#                     "CHARACTERSTIC_VALUE": "ZZZZ",
+#                     "PRODUCT_ID": "VCP_1600",
+#                     "PROD_AVAILABILITY_DT": "2025-04-01",
+#                     "CLASS": "VCP_1600",
+#                     "CLASS_NUM": 245,
+#                     "CHARACTERSTIC_NUM": 1182,
+#                     "VALUE_NUM": 0,
+#                     "DELETE_FLAG": "",
+#                     "CHANGED_DATE": "2025-04-01",
+#                     "CHANGED_TIME": "07:40:53",
+#                     "CHANGED_BY": "SBP",
+#                     "CREATED_DATE": "2025-03-26",
+#                     "CREATED_TIME": "08:18:10",
+#                     "CREATED_BY": "SBP"
+#                 },
+#                 {
+#                     "CHARACTERSTIC": "AB_S",
+#                     "CHARACTERSTIC_VALUE": "ZZZZ",
+#                     "PRODUCT_ID": "VCP_1600",
+#                     "PROD_AVAILABILITY_DT": "2025-04-01",
+#                     "CLASS": "VCP_1600",
+#                     "CLASS_NUM": 245,
+#                     "CHARACTERSTIC_NUM": 1162,
+#                     "VALUE_NUM": 0,
+#                     "DELETE_FLAG": "",
+#                     "CHANGED_DATE": "2025-04-01",
+#                     "CHANGED_TIME": "07:40:53",
+#                     "CHANGED_BY": "SBP",
+#                     "CREATED_DATE": "2025-03-26",
+#                     "CREATED_TIME": "08:18:10",
+#                     "CREATED_BY": "SBP"
+#                 },
+#                 {
+#                     "CHARACTERSTIC": "AVC_RBT_SLA",
+#                     "CHARACTERSTIC_VALUE": "ZZZZ",
+#                     "PRODUCT_ID": "VCP_1600",
+#                     "PROD_AVAILABILITY_DT": "2025-04-01",
+#                     "CLASS": "VCP_1600",
+#                     "CLASS_NUM": 245,
+#                     "CHARACTERSTIC_NUM": 812,
+#                     "VALUE_NUM": 0,
+#                     "DELETE_FLAG": "",
+#                     "CHANGED_DATE": "2025-04-01",
+#                     "CHANGED_TIME": "07:40:53",
+#                     "CHANGED_BY": "SBP",
+#                     "CREATED_DATE": "2025-03-26",
+#                     "CREATED_TIME": "08:18:10",
+#                     "CREATED_BY": "SBP"
+#                 }
+                
+#             ]
+#         }
+#     ]
+# }
+
+POST  http://localhost:4004/odata/v4/catalog/LOCATION_STB
+Content-Type: application/json
+# Authorization: Basic vcpsteelcase:sbpcorp
+
+        {
+            "MANDT": "",
+            "LOCATION_ID": "Ts",
+            "LOCATION_DESC": "SCT00",
+            "LOCATION_TYPE": "P",
+            "LATITUDE": null,
+            "LONGITUTE": null,
+            "RESERVE_FIELD1": "",
+            "RESERVE_FIELD2": "",
+            "RESERVE_FIELD3": "",
+            "RESERVE_FIELD4": "",
+            "RESERVE_FIELD5": "",
+            "DELETE_FLAG": "",
+            "CHANGED_DATE": "2025-08-21",
+            "CHANGED_TIME": "08:00:46",
+            "CHANGED_BY": "SUJIT",
+            "CREATED_DATE": "2025-08-21",
+            "CREATED_TIME": "08:00:46",
+            "CREATED_BY": "SUJIT"
+            }
+        

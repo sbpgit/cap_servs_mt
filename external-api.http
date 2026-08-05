@@ -1,0 +1,19 @@
+GET http://localhost:4004/odata/v4/catalog-interface/createVariant(Flag='X',USER='pradeepkumardaka@sbpcorp.in',VARDATA='[{\"Field\":\"Location\",\"FieldCenter\":\"1\",\"Value\":\"1600\",\"Default\":\"Y\",\"IDNAME\":\"Standard123\",\"App_Name\":\"vcp.vcplannerdashboard\",\"SCOPE\":\"Public\"},{\"Field\":\"Product\",\"FieldCenter\":\"1\",\"Value\":\"VCP_1600\",\"IDNAME\":\"Standard123\",\"App_Name\":\"vcp.vcplannerdashboard\",\"SCOPE\":\"Public\"},{\"Field\":\"ALERTS_VISIBLE\",\"FieldCenter\":\"1\",\"Value\":\"true\",\"IDNAME\":\"Standard123\",\"App_Name\":\"vcp.vcplannerdashboard\",\"SCOPE\":\"Public\"},{\"Field\":\"LAGS_VISIBLE\",\"FieldCenter\":\"1\",\"Value\":\"false\",\"IDNAME\":\"Standard123\",\"App_Name\":\"vcp.vcplannerdashboard\",\"SCOPE\":\"Public\"},{\"Field\":\"WOW_VISIBLE\",\"FieldCenter\":\"1\",\"Value\":\"true\",\"IDNAME\":\"Standard123\",\"App_Name\":\"vcp.vcplannerdashboard\",\"SCOPE\":\"Public\"}]"]')
+Content-Type: application/application/json
+###
+GET http://localhost:4004/odata/v4/catalog-interface/getAssemblyLagfun( FACTORY_LOCATION='1600',LOCATION='1600',PRODUCT='VCP_1600',START_MONTH='FY26 P07',END_MONTH='FY26 P08')
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJqaWQiOiI2UzBaakV6RHFqSU5Pamp0Rk9KdTA4ZUs3WnhoK2hVQ2pabUIzQ3BGV0J3PSIsImFsZyI6IlJTMjU2Iiwiamt1IjoiaHR0cHM6Ly9tdHRzYnBkaWdpdGFsLmF1dGhlbnRpY2F0aW9uLnVzMTAuaGFuYS5vbmRlbWFuZC5jb20vdG9rZW5fa2V5cyIsImtpZCI6ImRlZmF1bHQtand0LWtleS1kZmMyOTlmMjMxIn0.eyJzdWIiOiJzYi1jYXBfc2VydnNfbXQtc2JwbXR0LWRldiF0NjEyNTIwIiwiaXNzIjoiaHR0cHM6Ly9tdHRzYnBkaWdpdGFsLmF1dGhlbnRpY2F0aW9uLnVzMTAuaGFuYS5vbmRlbWFuZC5jb20vb2F1dGgvdG9rZW4iLCJhdXRob3JpdGllcyI6WyJ1YWEucmVzb3VyY2UiXSwiY2xpZW50X2lkIjoic2ItY2FwX3NlcnZzX210LXNicG10dC1kZXYhdDYxMjUyMCIsImF1ZCI6WyJ1YWEiLCJzYi1jYXBfc2VydnNfbXQtc2JwbXR0LWRldiF0NjEyNTIwIl0sImV4dF9hdHRyIjp7ImVuaGFuY2VyIjoiWFNVQUEiLCJzdWJhY2NvdW50aWQiOiJlZjgwZjMyNi00OTYzLTQ3YTQtODU3ZS00OTkxOWI2MWEwMWEiLCJ6ZG4iOiJtdHRzYnBkaWdpdGFsIn0sInppZCI6ImVmODBmMzI2LTQ5NjMtNDdhNC04NTdlLTQ5OTE5YjYxYTAxYSIsImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMiLCJhenAiOiJzYi1jYXBfc2VydnNfbXQtc2JwbXR0LWRldiF0NjEyNTIwIiwic2NvcGUiOlsidWFhLnJlc291cmNlIl0sImV4cCI6MTc4NTE5Njg1OSwiaWF0IjoxNzg1MTUzNjU5LCJqdGkiOiJlNzBjNDFlNGU5ZTQ0NDkxYTJkNzY4MGFiMTVlMzcyMCIsInJldl9zaWciOiI1OTBlMGViZSIsImNpZCI6InNiLWNhcF9zZXJ2c19tdC1zYnBtdHQtZGV2IXQ2MTI1MjAifQ.v9PyLQtgVqJW1TYqDKvXsfT_REmyyLmQQjWNuV_YEplJ21judv2aAnrO8qLt5fhkBkqAhqs6xC3Kf0f7Dev1JDuFf3CrhwYkVeP8HFZB1wUMqRO52Y-yD-TxeYn5-19mNqRW5du8FuHsA_KRwYnPkHT596rH7K8hjeLYndMab_5gxufV1rIx9E4kGQTTcGV0dcV5OLHZVOlzoYJ6bTObb6CxFUmKeXVNGdsLGBbZfjo3WtukSwYdILvF0XaBwIbBsMCwPCWdCCzPa5LZOJIoNtnOnz0kl8gJ4Ee8axIHsDXhM6PAQgua1J4qZP6bAHfvALUGJqqbtRToGLR6_CrFXQ
+Content-Type: application/json
+
+# GET http://localhost:4004/odata/v4/catalog-interface/getDemandAndForecast()
+# Content-Type: application/application/json
+
+# GET  http://localhost:4004/odata/v4/catalog/insertA
+# Content-Type: application/json
+
+
+
+# GET http://localhost:4004/odata/v4/catalog-interface/getPrdDmdLagfun(FACTORY_LOACATION='1600',LOCATION='1600',MONTH='FY26 P07',PRODUCT='VCP_1600')
+# Content-Type: application/json
+
+# GET http://localhost:4004/odata/v4/catalog-interface/getPrdDmdLagFun(FACTORY_LOACATION='1600',LOCATION='1600',MONTH='FY26%20P07',PRODUCT='VCP_1600')

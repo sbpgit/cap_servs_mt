@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="PlannerService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="getOptionPercentageLag" EntityType="PlannerService.getOptionPercentageLag"/>
+                <EntitySet Name="getRestrictionLag" EntityType="PlannerService.getRestrictionLag"/>
+                <EntitySet Name="getProductDemandLag" EntityType="PlannerService.getProductDemandLag"/>
+                <EntitySet Name="getAssemblyLag" EntityType="PlannerService.getAssemblyLag"/>
+                <EntitySet Name="getAssemblyData" EntityType="PlannerService.getAssemblyData"/>
+                <EntitySet Name="getRTRData" EntityType="PlannerService.getRTRData"/>
+                <EntitySet Name="getOptPrtData" EntityType="PlannerService.getOptPrtData"/>
+                <EntitySet Name="getPrdDmdData" EntityType="PlannerService.getPrdDmdData"/>
+                <EntitySet Name="getPlannerLocProd" EntityType="PlannerService.getPlannerLocProd"/>
+                <EntitySet Name="getAssemblyDesc" EntityType="PlannerService.getAssemblyDesc"/>
+                <FunctionImport Name="getAssemblyLagfun" Function="PlannerService.getAssemblyLagfun"/>
+                <FunctionImport Name="getOptPercentLagfun" Function="PlannerService.getOptPercentLagfun"/>
+                <FunctionImport Name="getOptPercentLagFun" Function="PlannerService.getOptPercentLagFun"/>
+                <FunctionImport Name="getRestrictionLagfun" Function="PlannerService.getRestrictionLagfun"/>
+                <FunctionImport Name="getRestrictionLagFun" Function="PlannerService.getRestrictionLagFun"/>
+                <FunctionImport Name="getPrdDmdLagfun" Function="PlannerService.getPrdDmdLagfun"/>
+                <FunctionImport Name="getStatForecast" Function="PlannerService.getStatForecast"/>
+                <FunctionImport Name="getPrdDmdLagFun" Function="PlannerService.getPrdDmdLagFun"/>
+                <FunctionImport Name="createVariantPlanner" Function="PlannerService.createVariantPlanner"/>
+                <FunctionImport Name="updateVariantPlanner" Function="PlannerService.updateVariantPlanner"/>
+            </EntityContainer>
+            <EntityType Name="getOptionPercentageLag">
+                <Property Name="FACTORY_LOC" Type="Edm.String" MaxLength="4"/>
+                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4"/>
+                <Property Name="PRODUCT_ID" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CHAR_NUM" Type="Edm.String" MaxLength="100"/>
+                <Property Name="CHARVAL_NUM" Type="Edm.String" MaxLength="80"/>
+                <Property Name="SELECTED_MONTH" Type="Edm.String" MaxLength="20"/>
+                <Property Name="LAG_MONTH" Type="Edm.Int32"/>
+                <Property Name="ACTUAL_MONTH" Type="Edm.String" MaxLength="50"/>
+                <Property Name="LAG_QTY" Type="Edm.Int32"/>
+                <Property Name="ACTUAL_QTY" Type="Edm.Int32"/>
+                <Property Name="MAPE" Type="Edm.Int32"/>
+                <Property Name="MAPE_QTY_ABS" Type="Edm.Int32"/>
+                <Property Name="MAPE_QTY" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="getRestrictionLag">
+                <Property Name="FACTORY_LOC" Type="Edm.String" MaxLength="4"/>
+                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4"/>
+                <Property Name="LINE_ID" Type="Edm.String" MaxLength="40"/>
+                <Property Name="RESTRICTION" Type="Edm.String" MaxLength="30"/>
+                <Property Name="SELECTED_MONTH" Type="Edm.String" MaxLength="20"/>
+                <Property Name="LAG_MONTH" Type="Edm.Int32"/>
+                <Property Name="ACTUAL_MONTH" Type="Edm.String" MaxLength="50"/>
+                <Property Name="LAG_QTY" Type="Edm.Int32"/>
+                <Property Name="ACTUAL_QTY" Type="Edm.Int32"/>
+                <Property Name="MAPE" Type="Edm.Int32"/>
+                <Property Name="MAPE_QTY_ABS" Type="Edm.Int32"/>
+                <Property Name="MAPE_QTY" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="getProductDemandLag">
+                <Property Name="FACTORY_LOC" Type="Edm.String" MaxLength="4"/>
+                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4"/>
+                <Property Name="PRODUCT_ID" Type="Edm.String" MaxLength="40"/>
+                <Property Name="SELECTED_MONTH" Type="Edm.String" MaxLength="20"/>
+                <Property Name="LAG_MONTH" Type="Edm.Int32"/>
+                <Property Name="ACTUAL_MONTH" Type="Edm.String" MaxLength="50"/>
+                <Property Name="LAG_QTY" Type="Edm.Int32"/>
+                <Property Name="ACTUAL_QTY" Type="Edm.Int32"/>
+                <Property Name="MAPE" Type="Edm.Int32"/>
+                <Property Name="MAPE_QTY_ABS" Type="Edm.Int32"/>
+                <Property Name="MAPE_QTY" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="getAssemblyLag">
+                <Property Name="FACTORY_LOC" Type="Edm.String" MaxLength="4"/>
+                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4"/>
+                <Property Name="PRODUCT_ID" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ASSEMBLY" Type="Edm.String" MaxLength="200"/>
+                <Property Name="MRP_GROUP" Type="Edm.String" MaxLength="4"/>
+                <Property Name="MRP_TYPE" Type="Edm.String" MaxLength="2"/>
+                <Property Name="SELECTED_MONTH" Type="Edm.String" MaxLength="20"/>
+                <Property Name="LAG_MONTH" Type="Edm.Int32"/>
+                <Property Name="ACTUAL_MONTH" Type="Edm.String" MaxLength="50"/>
+                <Property Name="LAG_QTY" Type="Edm.Int32"/>
+                <Property Name="ACTUAL_QTY" Type="Edm.Int32"/>
+                <Property Name="MAPE" Type="Edm.Int32"/>
+                <Property Name="MAPE_QTY_ABS" Type="Edm.Int32"/>
+                <Property Name="MAPE_QTY" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="getAssemblyData">
+                <Key>
+                    <PropertyRef Name="FACTORY_LOC"/>
+                    <PropertyRef Name="LOCATION_ID"/>
+                    <PropertyRef Name="PRODUCT_ID"/>
+                    <PropertyRef Name="ASSEMBLY"/>
+                    <PropertyRef Name="MONTH"/>
+                    <PropertyRef Name="LAG_MONTH"/>
+                    <PropertyRef Name="CREATED_TIME"/>
+                </Key>
+                <Property Name="FACTORY_LOC" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="PRODUCT_ID" Type="Edm.String" MaxLength="40" Nullable="false"/>
+                <Property Name="ASSEMBLY" Type="Edm.String" MaxLength="200" Nullable="false"/>
+                <Property Name="MONTH" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <Property Name="LAG_MONTH" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="LAG_QTY" Type="Edm.Int32"/>
+                <Property Name="ACTUAL_MONTH" Type="Edm.String" MaxLength="20"/>
+                <Property Name="ACTUAL_QTY" Type="Edm.Int32"/>
+                <Property Name="CREATED_TIME" Type="Edm.DateTimeOffset" Precision="7" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="getRTRData">
+                <Key>
+                    <PropertyRef Name="FACTORY_LOC"/>
+                    <PropertyRef Name="LOCATION_ID"/>
+                    <PropertyRef Name="LINE_ID"/>
+                    <PropertyRef Name="RESTRICTION"/>
+                    <PropertyRef Name="MONTH"/>
+                    <PropertyRef Name="LAG_MONTH"/>
+                    <PropertyRef Name="CREATED_TIME"/>
+                </Key>
+                <Property Name="FACTORY_LOC" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LINE_ID" Type="Edm.String" MaxLength="40" Nullable="false"/>
+                <Property Name="RESTRICTION" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="MONTH" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <Property Name="LAG_MONTH" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="CREATED_TIME" Type="Edm.DateTimeOffset" Precision="7" Nullable="false"/>
+                <Property Name="LAG_QTY" Type="Edm.Int32"/>
+                <Property Name="ACTUAL_MONTH" Type="Edm.String" MaxLength="20"/>
+                <Property Name="ACTUAL_QTY" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="getOptPrtData">
+                <Key>
+                    <PropertyRef Name="FACTORY_LOC"/>
+                    <PropertyRef Name="LOCATION_ID"/>
+                    <PropertyRef Name="PRODUCT_ID"/>
+                    <PropertyRef Name="CHAR_NUM"/>
+                    <PropertyRef Name="CHAR_VALUE"/>
+                    <PropertyRef Name="MONTH"/>
+                    <PropertyRef Name="LAG_MONTH"/>
+                    <PropertyRef Name="CREATED_TIME"/>
+                </Key>
+                <Property Name="FACTORY_LOC" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="PRODUCT_ID" Type="Edm.String" MaxLength="40" Nullable="false"/>
+                <Property Name="CHAR_NUM" Type="Edm.String" MaxLength="100" Nullable="false"/>
+                <Property Name="CHAR_VALUE" Type="Edm.String" MaxLength="80" Nullable="false"/>
+                <Property Name="MONTH" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <Property Name="LAG_MONTH" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="CREATED_TIME" Type="Edm.DateTimeOffset" Precision="7" Nullable="false"/>
+                <Property Name="LAG_QTY" Type="Edm.Int32"/>
+                <Property Name="ACTUAL_MONTH" Type="Edm.String" MaxLength="20"/>
+                <Property Name="ACTUAL_QTY" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="getPrdDmdData">
+                <Key>
+                    <PropertyRef Name="FACTORY_LOC"/>
+                    <PropertyRef Name="LOCATION_ID"/>
+                    <PropertyRef Name="PRODUCT_ID"/>
+                    <PropertyRef Name="MONTH"/>
+                    <PropertyRef Name="LAG_MONTH"/>
+                    <PropertyRef Name="CREATED_TIME"/>
+                </Key>
+                <Property Name="FACTORY_LOC" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="PRODUCT_ID" Type="Edm.String" MaxLength="40" Nullable="false"/>
+                <Property Name="MONTH" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <Property Name="LAG_MONTH" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="CREATED_TIME" Type="Edm.DateTimeOffset" Precision="7" Nullable="false"/>
+                <Property Name="LAG_QTY" Type="Edm.Int32"/>
+                <Property Name="ACTUAL_MONTH" Type="Edm.String" MaxLength="20"/>
+                <Property Name="ACTUAL_QTY" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="getPlannerLocProd">
+                <Key>
+                    <PropertyRef Name="FACTORY_LOC"/>
+                    <PropertyRef Name="PLAN_LOC"/>
+                    <PropertyRef Name="DEMAND_LOC"/>
+                    <PropertyRef Name="PRODUCT_ID"/>
+                    <PropertyRef Name="REF_PRODID"/>
+                    <PropertyRef Name="USER"/>
+                </Key>
+                <Property Name="FACTORY_LOC" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LOCATION_DESC" Type="Edm.String" MaxLength="30"/>
+                <Property Name="PLAN_LOC" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="PLANLOC_DESC" Type="Edm.String" MaxLength="30"/>
+                <Property Name="DEMAND_LOC" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="DEMAND_DESC" Type="Edm.String" MaxLength="30"/>
+                <Property Name="PRODUCT_ID" Type="Edm.String" MaxLength="40" Nullable="false"/>
+                <Property Name="PROD_DESC" Type="Edm.String" MaxLength="40"/>
+                <Property Name="REF_PRODID" Type="Edm.String" MaxLength="40" Nullable="false"/>
+                <Property Name="REFPROD_DESC" Type="Edm.String" MaxLength="100"/>
+                <Property Name="MRP_GROUP" Type="Edm.String" MaxLength="4"/>
+                <Property Name="MATERIAL_TYPE" Type="Edm.String" MaxLength="4"/>
+                <Property Name="USER" Type="Edm.String" MaxLength="100" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="getAssemblyDesc">
+                <Key>
+                    <PropertyRef Name="MAT_CHILD"/>
+                    <PropertyRef Name="PROD_DESC"/>
+                </Key>
+                <Property Name="MAT_CHILD" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="PROD_DESC" Type="Edm.String" MaxLength="40" Nullable="false"/>
+            </EntityType>
+            <Function Name="getAssemblyLagfun" IsBound="false" IsComposable="false">
+                <Parameter Name="FACTORY_LOCATION" Type="Edm.String" MaxLength="10"/>
+                <Parameter Name="LOCATION" Type="Edm.String" MaxLength="10"/>
+                <Parameter Name="PRODUCT" Type="Edm.String" MaxLength="40"/>
+                <Parameter Name="START_MONTH" Type="Edm.String" MaxLength="20"/>
+                <Parameter Name="END_MONTH" Type="Edm.String" MaxLength="20"/>
+                <ReturnType Type="Edm.String"/>
+            </Function>
+            <Function Name="getOptPercentLagfun" IsBound="false" IsComposable="false">
+                <Parameter Name="FACTORY_LOACATION" Type="Edm.String" MaxLength="10"/>
+                <Parameter Name="LOCATION" Type="Edm.String" MaxLength="10"/>
+                <Parameter Name="PRODUCT" Type="Edm.String" MaxLength="40"/>
+                <Parameter Name="MONTH" Type="Edm.String" MaxLength="40"/>
+                <Parameter Name="CHARACTERISTIC" Type="Edm.String" MaxLength="100"/>
+                <Parameter Name="CHARACTERISTIC_VALUE" Type="Edm.String" MaxLength="100"/>
+                <ReturnType Type="Edm.String"/>
+            </Function>
+            <Function Name="getOptPercentLagFun" IsBound="false" IsComposable="false">
+                <Parameter Name="FACTORY_LOCATION" Type="Edm.String" MaxLength="10"/>
+                <Parameter Name="LOCATION" Type="Edm.String" MaxLength="10"/>
+                <Parameter Name="PRODUCT" Type="Edm.String" MaxLength="40"/>
+                <Parameter Name="START_MONTH" Type="Edm.String" MaxLength="20"/>
+                <Parameter Name="END_MONTH" Type="Edm.String" MaxLength="20"/>
+                <ReturnType Type="Edm.String"/>
+            </Function>
+            <Function Name="getRestrictionLagfun" IsBound="false" IsComposable="false">
+                <Parameter Name="FACTORY_LOACATION" Type="Edm.String" MaxLength="10"/>
+                <Parameter Name="LOCATION" Type="Edm.String" MaxLength="10"/>
+                <Parameter Name="LINE" Type="Edm.String" MaxLength="40"/>
+                <Parameter Name="RESTRICTION_ID" Type="Edm.String" MaxLength="50"/>
+                <Parameter Name="MONTH" Type="Edm.String" MaxLength="40"/>
+                <ReturnType Type="Edm.String"/>
+            </Function>
+            <Function Name="getRestrictionLagFun" IsBound="false" IsComposable="false">
+                <Parameter Name="FACTORY_LOCATION" Type="Edm.String" MaxLength="10"/>
+                <Parameter Name="LOCATION" Type="Edm.String" MaxLength="10"/>
+                <Parameter Name="START_MONTH" Type="Edm.String" MaxLength="20"/>
+                <Parameter Name="END_MONTH" Type="Edm.String" MaxLength="20"/>
+                <ReturnType Type="Edm.String"/>
+            </Function>
+            <Function Name="getPrdDmdLagfun" IsBound="false" IsComposable="false">
+                <Parameter Name="FACTORY_LOACATION" Type="Edm.String" MaxLength="10"/>
+                <Parameter Name="LOCATION" Type="Edm.String" MaxLength="10"/>
+                <Parameter Name="MONTH" Type="Edm.String" MaxLength="40"/>
+                <Parameter Name="PRODUCT" Type="Edm.String" MaxLength="40"/>
+                <ReturnType Type="Edm.String"/>
+            </Function>
+            <Function Name="getStatForecast" IsBound="false" IsComposable="false">
+                <Parameter Name="FACTORY_LOCATION" Type="Edm.String" MaxLength="10"/>
+                <Parameter Name="LOCATION" Type="Edm.String" MaxLength="10"/>
+                <Parameter Name="PRODUCT" Type="Edm.String" MaxLength="40"/>
+                <Parameter Name="START_MONTH" Type="Edm.String" MaxLength="20"/>
+                <Parameter Name="END_MONTH" Type="Edm.String" MaxLength="20"/>
+                <ReturnType Type="Edm.String"/>
+            </Function>
+            <Function Name="getPrdDmdLagFun" IsBound="false" IsComposable="false">
+                <Parameter Name="FACTORY_LOCATION" Type="Edm.String" MaxLength="10"/>
+                <Parameter Name="LOCATION" Type="Edm.String" MaxLength="10"/>
+                <Parameter Name="PRODUCT" Type="Edm.String" MaxLength="40"/>
+                <Parameter Name="START_MONTH" Type="Edm.String" MaxLength="20"/>
+                <Parameter Name="END_MONTH" Type="Edm.String" MaxLength="20"/>
+                <ReturnType Type="Edm.String"/>
+            </Function>
+            <Function Name="createVariantPlanner" IsBound="false" IsComposable="false">
+                <Parameter Name="Flag" Type="Edm.String"/>
+                <Parameter Name="USER" Type="Edm.String"/>
+                <Parameter Name="VARDATA" Type="Edm.String"/>
+                <ReturnType Type="Edm.String"/>
+            </Function>
+            <Function Name="updateVariantPlanner" IsBound="false" IsComposable="false">
+                <Parameter Name="VARDATA" Type="Edm.String"/>
+                <ReturnType Type="Edm.String"/>
+            </Function>
+            <Annotations Target="PlannerService.getOptionPercentageLag/FACTORY_LOC">
+                <Annotation Term="Common.Label" String="FACTORY_LOC"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptionPercentageLag/LOCATION_ID">
+                <Annotation Term="Common.Label" String="LOCATION_ID"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptionPercentageLag/PRODUCT_ID">
+                <Annotation Term="Common.Label" String="PRODUCT_ID"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptionPercentageLag/CHAR_NUM">
+                <Annotation Term="Common.Label" String="Characteristic Number"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptionPercentageLag/CHARVAL_NUM">
+                <Annotation Term="Common.Label" String="Characteristic Value Number"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptionPercentageLag/SELECTED_MONTH">
+                <Annotation Term="Common.Label" String="MONTH"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptionPercentageLag/LAG_MONTH">
+                <Annotation Term="Common.Label" String="LAG_MONTH"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptionPercentageLag/ACTUAL_MONTH">
+                <Annotation Term="Common.Label" String="ACTUAL_MONTH"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptionPercentageLag/LAG_QTY">
+                <Annotation Term="Common.Label" String="LAG_QTY"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptionPercentageLag/ACTUAL_QTY">
+                <Annotation Term="Common.Label" String="ACTUAL_QTY"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptionPercentageLag/MAPE">
+                <Annotation Term="Common.Label" String="ACTUAL_QTY"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptionPercentageLag/MAPE_QTY_ABS">
+                <Annotation Term="Common.Label" String="MAPE_QTY_ABS"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptionPercentageLag/MAPE_QTY">
+                <Annotation Term="Common.Label" String="MAPE_QTY"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLag/FACTORY_LOC">
+                <Annotation Term="Common.Label" String="FACTORY_LOC"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLag/LOCATION_ID">
+                <Annotation Term="Common.Label" String="LOCATION_ID"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLag/LINE_ID">
+                <Annotation Term="Common.Label" String="Line"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLag/RESTRICTION">
+                <Annotation Term="Common.Label" String="Restriction"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLag/SELECTED_MONTH">
+                <Annotation Term="Common.Label" String="MONTH"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLag/LAG_MONTH">
+                <Annotation Term="Common.Label" String="LAG_MONTH"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLag/ACTUAL_MONTH">
+                <Annotation Term="Common.Label" String="ACTUAL_MONTH"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLag/LAG_QTY">
+                <Annotation Term="Common.Label" String="LAG_QTY"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLag/ACTUAL_QTY">
+                <Annotation Term="Common.Label" String="ACTUAL_QTY"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLag/MAPE">
+                <Annotation Term="Common.Label" String="ACTUAL_QTY"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLag/MAPE_QTY_ABS">
+                <Annotation Term="Common.Label" String="MAPE_QTY_ABS"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLag/MAPE_QTY">
+                <Annotation Term="Common.Label" String="MAPE_QTY"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getProductDemandLag/FACTORY_LOC">
+                <Annotation Term="Common.Label" String="FACTORY_LOC"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getProductDemandLag/LOCATION_ID">
+                <Annotation Term="Common.Label" String="LOCATION_ID"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getProductDemandLag/PRODUCT_ID">
+                <Annotation Term="Common.Label" String="PRODUCT_ID"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getProductDemandLag/SELECTED_MONTH">
+                <Annotation Term="Common.Label" String="MONTH"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getProductDemandLag/LAG_MONTH">
+                <Annotation Term="Common.Label" String="LAG_MONTH"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getProductDemandLag/ACTUAL_MONTH">
+                <Annotation Term="Common.Label" String="ACTUAL_MONTH"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getProductDemandLag/LAG_QTY">
+                <Annotation Term="Common.Label" String="LAG_QTY"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getProductDemandLag/ACTUAL_QTY">
+                <Annotation Term="Common.Label" String="ACTUAL_QTY"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getProductDemandLag/MAPE">
+                <Annotation Term="Common.Label" String="ACTUAL_QTY"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getProductDemandLag/MAPE_QTY_ABS">
+                <Annotation Term="Common.Label" String="MAPE_QTY_ABS"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getProductDemandLag/MAPE_QTY">
+                <Annotation Term="Common.Label" String="MAPE_QTY"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyLag/FACTORY_LOC">
+                <Annotation Term="Common.Label" String="FACTORY_LOC"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyLag/LOCATION_ID">
+                <Annotation Term="Common.Label" String="LOCATION_ID"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyLag/PRODUCT_ID">
+                <Annotation Term="Common.Label" String="PRODUCT_ID"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyLag/ASSEMBLY">
+                <Annotation Term="Common.Label" String="ASSEMBLY"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyLag/MRP_GROUP">
+                <Annotation Term="Common.Label" String="MRP Group"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyLag/MRP_TYPE">
+                <Annotation Term="Common.Label" String="MRP Type"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyLag/SELECTED_MONTH">
+                <Annotation Term="Common.Label" String="MONTH"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyLag/LAG_MONTH">
+                <Annotation Term="Common.Label" String="LAG_MONTH"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyLag/ACTUAL_MONTH">
+                <Annotation Term="Common.Label" String="ACTUAL_MONTH"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyLag/LAG_QTY">
+                <Annotation Term="Common.Label" String="LAG_QTY"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyLag/ACTUAL_QTY">
+                <Annotation Term="Common.Label" String="ACTUAL_QTY"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyLag/MAPE">
+                <Annotation Term="Common.Label" String="ACTUAL_QTY"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyLag/MAPE_QTY_ABS">
+                <Annotation Term="Common.Label" String="MAPE_QTY_ABS"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyLag/MAPE_QTY">
+                <Annotation Term="Common.Label" String="MAPE_QTY"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyData/FACTORY_LOC">
+                <Annotation Term="Common.Label" String="Factory Location"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyData/LOCATION_ID">
+                <Annotation Term="Common.Label" String="Location"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyData/PRODUCT_ID">
+                <Annotation Term="Common.Label" String="Product"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyData/ASSEMBLY">
+                <Annotation Term="Common.Label" String="Assembly"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyData/MONTH">
+                <Annotation Term="Common.Label" String="Telescopic month"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyData/LAG_MONTH">
+                <Annotation Term="Common.Label" String="Lag Month"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyData/LAG_QTY">
+                <Annotation Term="Common.Label" String="Lag Quantity"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyData/ACTUAL_MONTH">
+                <Annotation Term="Common.Label" String="Actual Month"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyData/ACTUAL_QTY">
+                <Annotation Term="Common.Label" String="Actual Quantity"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyData/CREATED_TIME">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRTRData/FACTORY_LOC">
+                <Annotation Term="Common.Label" String="Factory Location"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRTRData/LOCATION_ID">
+                <Annotation Term="Common.Label" String="Location"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRTRData/LINE_ID">
+                <Annotation Term="Common.Label" String="Line ID"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRTRData/RESTRICTION">
+                <Annotation Term="Common.Label" String="Restriction"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRTRData/MONTH">
+                <Annotation Term="Common.Label" String="Telescopic month"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRTRData/LAG_MONTH">
+                <Annotation Term="Common.Label" String="Lag Month"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRTRData/CREATED_TIME">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRTRData/LAG_QTY">
+                <Annotation Term="Common.Label" String="Lag Quantity"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRTRData/ACTUAL_MONTH">
+                <Annotation Term="Common.Label" String="Actual Month"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getRTRData/ACTUAL_QTY">
+                <Annotation Term="Common.Label" String="Actual Quantity"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPrtData/FACTORY_LOC">
+                <Annotation Term="Common.Label" String="Factory Location"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPrtData/LOCATION_ID">
+                <Annotation Term="Common.Label" String="Location"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPrtData/PRODUCT_ID">
+                <Annotation Term="Common.Label" String="Product"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPrtData/CHAR_NUM">
+                <Annotation Term="Common.Label" String="Charateristic Name"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPrtData/CHAR_VALUE">
+                <Annotation Term="Common.Label" String="Charateristic Value"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPrtData/MONTH">
+                <Annotation Term="Common.Label" String="Telescopic month"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPrtData/LAG_MONTH">
+                <Annotation Term="Common.Label" String="Lag Month"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPrtData/CREATED_TIME">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPrtData/LAG_QTY">
+                <Annotation Term="Common.Label" String="Lag Quantity"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPrtData/ACTUAL_MONTH">
+                <Annotation Term="Common.Label" String="Actual Month"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPrtData/ACTUAL_QTY">
+                <Annotation Term="Common.Label" String="Actual Quantity"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPrdDmdData/FACTORY_LOC">
+                <Annotation Term="Common.Label" String="Factory Location"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPrdDmdData/LOCATION_ID">
+                <Annotation Term="Common.Label" String="Location"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPrdDmdData/PRODUCT_ID">
+                <Annotation Term="Common.Label" String="Product"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPrdDmdData/MONTH">
+                <Annotation Term="Common.Label" String="Telescopic month"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPrdDmdData/LAG_MONTH">
+                <Annotation Term="Common.Label" String="Lag Month"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPrdDmdData/CREATED_TIME">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPrdDmdData/LAG_QTY">
+                <Annotation Term="Common.Label" String="Lag Quantity"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPrdDmdData/ACTUAL_MONTH">
+                <Annotation Term="Common.Label" String="Actual Month"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPrdDmdData/ACTUAL_QTY">
+                <Annotation Term="Common.Label" String="Actual Quantity"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPlannerLocProd/FACTORY_LOC">
+                <Annotation Term="Common.Label" String="Factory Location "/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPlannerLocProd/LOCATION_DESC">
+                <Annotation Term="Common.Label" String="Factory Loc Description"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPlannerLocProd/PLAN_LOC">
+                <Annotation Term="Common.Label" String="Planning Location "/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPlannerLocProd/PLANLOC_DESC">
+                <Annotation Term="Common.Label" String="Planning Location Description"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPlannerLocProd/DEMAND_LOC">
+                <Annotation Term="Common.Label" String="Demand Location "/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPlannerLocProd/DEMAND_DESC">
+                <Annotation Term="Common.Label" String="Demand Location Description"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPlannerLocProd/PRODUCT_ID">
+                <Annotation Term="Common.Label" String="Product"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPlannerLocProd/PROD_DESC">
+                <Annotation Term="Common.Label" String="Product Description"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPlannerLocProd/REF_PRODID">
+                <Annotation Term="Common.Label" String="Reference Product Id"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPlannerLocProd/REFPROD_DESC">
+                <Annotation Term="Common.Label" String="Reference Product Description"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPlannerLocProd/MRP_GROUP">
+                <Annotation Term="Common.Label" String="MRP Group"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPlannerLocProd/MATERIAL_TYPE">
+                <Annotation Term="Common.Label" String="Material Type"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getPlannerLocProd/USER">
+                <Annotation Term="Common.Label" String="User"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyDesc/MAT_CHILD">
+                <Annotation Term="Common.Label" String="LOCATION_ID"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyDesc/PROD_DESC">
+                <Annotation Term="Common.Label" String="PRODUCT_ID"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
