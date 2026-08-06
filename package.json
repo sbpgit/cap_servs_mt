@@ -2,10 +2,10 @@
   "name": "cap_servs_mt",
   "version": "1.0.0",
   "dependencies": {
-    "@sap/cds-hana": "^2",
+    "@cap-js/hana": "^2",
     "@sap-cloud-sdk/resilience": "^4.5.1",
-    "@sap/cds": "^8",
-    "@sap/cds-mtxs": "^2",
+    "@sap/cds": "^9",
+    "@sap/cds-mtxs": "^3",
     "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
     "@sap/ux-specification": "^1.144.3",
     "@sap/xsenv": "^4.2.0",
