@@ -9,7 +9,7 @@
     "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
     "@sap/ux-specification": "^1.144.3",
     "@sap/xsenv": "^4.2.0",
-    "@sap/xssec": "^3",
+    "@sap/xssec": "^4",
     "axios": "^1.6.6",
     "body-parser": "^2.2.0",
     "cfenv": "^1.2.4",
@@ -21,10 +21,12 @@
     "path": "^0.12.7",
     "sql": "^0.78.0",
     "sqlite3": "^5.1.6",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "@sap-cloud-sdk/connectivity": "^4",
+    "@sap-cloud-sdk/http-client": "^4"
   },
   "devDependencies": {
-     "@sap/cds-dk": "^7",
+    "@sap/cds-dk": "^9",
     "@sap/ux-specification": "^1.120.6",
     "rimraf": "^3.0.2"
   },
@@ -47,12 +49,22 @@
     },
     "requires": {
       "db": {
-    "kind": "hana"
-  },
-  "[hybrid]": {
-      "db": "hana",
-      "multitenancy": true
-    },
+        "kind": "hana",
+        "pool": {
+          "acquireTimeoutMillis": 240000,
+          "evictionRunIntervalMillis": 60000,
+          "min": 0,
+          "max": 500,
+          "numTestsPerEvictionRun": 150,
+          "softIdleTimeoutMillis": 30000,
+          "idleTimeoutMillis": 30000,
+          "testOnBorrow": true
+        }
+      },
+      "[hybrid]": {
+        "db": "hana",
+        "multitenancy": true
+      },
       "[production]": {
         "auth": "xsuaa",
         "multitenancy": true

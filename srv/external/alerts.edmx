@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
-    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
         <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
     </edmx:Reference>
-    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
         <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
     </edmx:Reference>
-    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
         <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
     </edmx:Reference>
-    <edmx:DataServices m:DataServiceVersion="2.0">
-        <Schema Namespace="CatalogService" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-            <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+    <edmx:DataServices>
+        <Schema Namespace="CatalogService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation Term="Core.Links">
+                <Collection>
+                    <Record>
+                        <PropertyValue Property="rel" String="author"/>
+                        <PropertyValue Property="href" String="https://cap.cloud.sap"/>
+                    </Record>
+                </Collection>
+            </Annotation>
+            <EntityContainer Name="EntityContainer">
                 <EntitySet Name="getAlertLogs" EntityType="CatalogService.getAlertLogs"/>
                 <EntitySet Name="getApplications" EntityType="CatalogService.getApplications"/>
                 <EntitySet Name="getMessageGroups" EntityType="CatalogService.getMessageGroups"/>
@@ -19,13 +27,10 @@
                 <EntitySet Name="getPlannerAlerts" EntityType="CatalogService.getPlannerAlerts"/>
                 <EntitySet Name="getLocations" EntityType="CatalogService.getLocations"/>
                 <EntitySet Name="getProducts" EntityType="CatalogService.getProducts"/>
-                <FunctionImport Name="getfactorylocdesc" ReturnType="Edm.String" m:HttpMethod="GET"/>
-                <FunctionImport Name="maintainAlertLogs" ReturnType="Edm.String" m:HttpMethod="POST">
-                    <Parameter Name="FLAG" Type="Edm.String" Mode="In" Nullable="true"/>
-                    <Parameter Name="USERNAME" Type="Edm.String" Mode="In" Nullable="true"/>
-                    <Parameter Name="OBJ" Type="Edm.String" Mode="In" Nullable="true"/>
-                </FunctionImport>
-                <FunctionImport Name="purgeAlerts" ReturnType="Edm.String" m:HttpMethod="POST"/>
+                <FunctionImport Name="getfactorylocdesc" Function="CatalogService.getfactorylocdesc"/>
+                <ActionImport Name="maintainAlertLogs" Action="CatalogService.maintainAlertLogs"/>
+                <ActionImport Name="purgeAlerts" Action="CatalogService.purgeAlerts"/>
+                <ActionImport Name="upsertAlertLog" Action="CatalogService.upsertAlertLog"/>
             </EntityContainer>
             <EntityType Name="getAlertLogs">
                 <Key>
@@ -38,7 +43,7 @@
                 <Property Name="APPL" Type="Edm.String" MaxLength="100" Nullable="false"/>
                 <Property Name="MSGID" Type="Edm.String" MaxLength="3" Nullable="false"/>
                 <Property Name="MSGGRP" Type="Edm.String" MaxLength="20" Nullable="false"/>
-                <Property Name="EXP_DATE" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="EXP_DATE" Type="Edm.Date"/>
                 <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4"/>
                 <Property Name="PRODUCT_ID" Type="Edm.String" MaxLength="40"/>
                 <Property Name="MSGTXT" Type="Edm.String"/>
@@ -135,7 +140,22 @@
                 </Key>
                 <Property Name="PRODUCT_ID" Type="Edm.String" MaxLength="40" Nullable="false"/>
             </EntityType>
-            <Annotations Target="CatalogService.EntityContainer/getAlertLogs" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Function Name="getfactorylocdesc" IsBound="false" IsComposable="false">
+                <ReturnType Type="Edm.String"/>
+            </Function>
+            <Action Name="maintainAlertLogs" IsBound="false">
+                <Parameter Name="FLAG" Type="Edm.String"/>
+                <Parameter Name="USERNAME" Type="Edm.String"/>
+                <Parameter Name="OBJ" Type="Edm.String"/>
+                <ReturnType Type="Edm.String"/>
+            </Action>
+            <Action Name="purgeAlerts" IsBound="false">
+                <ReturnType Type="Edm.String"/>
+            </Action>
+            <Action Name="upsertAlertLog" IsBound="false">
+                <ReturnType Type="Edm.String"/>
+            </Action>
+            <Annotations Target="CatalogService.EntityContainer/getAlertLogs">
                 <Annotation Term="Capabilities.DeleteRestrictions">
                     <Record Type="Capabilities.DeleteRestrictionsType">
                         <PropertyValue Property="Deletable" Bool="false"/>
@@ -152,97 +172,97 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="CatalogService.getAlertLogs/LOG_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getAlertLogs/LOG_ID">
                 <Annotation Term="Common.Label" String="Log ID"/>
             </Annotations>
-            <Annotations Target="CatalogService.getAlertLogs/APPL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getAlertLogs/APPL">
                 <Annotation Term="Common.Label" String="Application Name"/>
             </Annotations>
-            <Annotations Target="CatalogService.getAlertLogs/MSGID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getAlertLogs/MSGID">
                 <Annotation Term="Common.Label" String="Message ID"/>
             </Annotations>
-            <Annotations Target="CatalogService.getAlertLogs/MSGGRP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getAlertLogs/MSGGRP">
                 <Annotation Term="Common.Label" String="Message Group"/>
             </Annotations>
-            <Annotations Target="CatalogService.getAlertLogs/EXP_DATE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getAlertLogs/EXP_DATE">
                 <Annotation Term="Common.Label" String="Expiry Date"/>
             </Annotations>
-            <Annotations Target="CatalogService.getAlertLogs/LOCATION_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getAlertLogs/LOCATION_ID">
                 <Annotation Term="Common.Label" String="Location"/>
             </Annotations>
-            <Annotations Target="CatalogService.getAlertLogs/PRODUCT_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getAlertLogs/PRODUCT_ID">
                 <Annotation Term="Common.Label" String="Product"/>
             </Annotations>
-            <Annotations Target="CatalogService.getAlertLogs/MSGTXT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getAlertLogs/MSGTXT">
                 <Annotation Term="Common.Label" String="Message Text"/>
             </Annotations>
-            <Annotations Target="CatalogService.getAlertLogs/CREATED_BY" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getAlertLogs/CREATED_BY">
                 <Annotation Term="Common.Label" String="Created By"/>
             </Annotations>
-            <Annotations Target="CatalogService.getAlertLogs/CREATED_TIME" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getAlertLogs/CREATED_TIME">
                 <Annotation Term="Common.Label" String="Created Time"/>
             </Annotations>
-            <Annotations Target="CatalogService.getAlertLogs/LOGMSG" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getAlertLogs/LOGMSG">
                 <Annotation Term="Common.Label" String="Log Message"/>
             </Annotations>
-            <Annotations Target="CatalogService.getAlertLogs/MSGTYP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getAlertLogs/MSGTYP">
                 <Annotation Term="Common.Label" String="Message Type"/>
             </Annotations>
-            <Annotations Target="CatalogService.maintainAlerts/APPL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.maintainAlerts/APPL">
                 <Annotation Term="Common.Label" String="Application Name"/>
             </Annotations>
-            <Annotations Target="CatalogService.maintainAlerts/MSGID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.maintainAlerts/MSGID">
                 <Annotation Term="Common.Label" String="Message ID"/>
             </Annotations>
-            <Annotations Target="CatalogService.maintainAlerts/MSGGRP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.maintainAlerts/MSGGRP">
                 <Annotation Term="Common.Label" String="Message Group"/>
             </Annotations>
-            <Annotations Target="CatalogService.maintainAlerts/MSGTYP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.maintainAlerts/MSGTYP">
                 <Annotation Term="Common.Label" String="Message Type"/>
             </Annotations>
-            <Annotations Target="CatalogService.maintainAlerts/MSGTXT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.maintainAlerts/MSGTXT">
                 <Annotation Term="Common.Label" String="Message Text"/>
             </Annotations>
-            <Annotations Target="CatalogService.maintainAlerts/MSGDESC" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.maintainAlerts/MSGDESC">
                 <Annotation Term="Common.Label" String="Message Description"/>
             </Annotations>
-            <Annotations Target="CatalogService.maintainAlerts/VALID_DAYS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.maintainAlerts/VALID_DAYS">
                 <Annotation Term="Common.Label" String="Validity Days"/>
             </Annotations>
-            <Annotations Target="CatalogService.maintainAlerts/LOCATION_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.maintainAlerts/LOCATION_ID">
                 <Annotation Term="Common.Label" String="Location"/>
             </Annotations>
-            <Annotations Target="CatalogService.maintainAlerts/PRODUCT_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.maintainAlerts/PRODUCT_ID">
                 <Annotation Term="Common.Label" String="Product"/>
             </Annotations>
-            <Annotations Target="CatalogService.getPlannerAlerts/APPL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getPlannerAlerts/APPL">
                 <Annotation Term="Common.Label" String="Application Name"/>
             </Annotations>
-            <Annotations Target="CatalogService.getPlannerAlerts/MSGID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getPlannerAlerts/MSGID">
                 <Annotation Term="Common.Label" String="Message ID"/>
             </Annotations>
-            <Annotations Target="CatalogService.getPlannerAlerts/MSGGRP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getPlannerAlerts/MSGGRP">
                 <Annotation Term="Common.Label" String="Message Group"/>
             </Annotations>
-            <Annotations Target="CatalogService.getPlannerAlerts/LOCATION_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getPlannerAlerts/LOCATION_ID">
                 <Annotation Term="Common.Label" String="Location"/>
             </Annotations>
-            <Annotations Target="CatalogService.getPlannerAlerts/PRODUCT_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getPlannerAlerts/PRODUCT_ID">
                 <Annotation Term="Common.Label" String="Product"/>
             </Annotations>
-            <Annotations Target="CatalogService.getPlannerAlerts/MSGTXT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getPlannerAlerts/MSGTXT">
                 <Annotation Term="Common.Label" String="Message Text"/>
             </Annotations>
-            <Annotations Target="CatalogService.getPlannerAlerts/SUCCESS_COUNT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getPlannerAlerts/SUCCESS_COUNT">
                 <Annotation Term="Common.Label" String="Success Jobs Count"/>
             </Annotations>
-            <Annotations Target="CatalogService.getPlannerAlerts/ERROR_COUNT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getPlannerAlerts/ERROR_COUNT">
                 <Annotation Term="Common.Label" String="Error Jobs Count"/>
             </Annotations>
-            <Annotations Target="CatalogService.getPlannerAlerts/WARNING_COUNT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getPlannerAlerts/WARNING_COUNT">
                 <Annotation Term="Common.Label" String="Warning Jobs Count"/>
             </Annotations>
-            <Annotations Target="CatalogService.getPlannerAlerts/MESSAGE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="CatalogService.getPlannerAlerts/MESSAGE">
                 <Annotation Term="Common.Label" String="Message"/>
             </Annotations>
         </Schema>

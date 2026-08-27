@@ -8,6 +8,14 @@
     </edmx:Reference>
     <edmx:DataServices>
         <Schema Namespace="PlannerService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation Term="Core.Links">
+                <Collection>
+                    <Record>
+                        <PropertyValue Property="rel" String="author"/>
+                        <PropertyValue Property="href" String="https://cap.cloud.sap"/>
+                    </Record>
+                </Collection>
+            </Annotation>
             <EntityContainer Name="EntityContainer">
                 <EntitySet Name="getOptionPercentageLag" EntityType="PlannerService.getOptionPercentageLag"/>
                 <EntitySet Name="getRestrictionLag" EntityType="PlannerService.getRestrictionLag"/>
@@ -31,13 +39,22 @@
                 <FunctionImport Name="updateVariantPlanner" Function="PlannerService.updateVariantPlanner"/>
             </EntityContainer>
             <EntityType Name="getOptionPercentageLag">
-                <Property Name="FACTORY_LOC" Type="Edm.String" MaxLength="4"/>
-                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4"/>
-                <Property Name="PRODUCT_ID" Type="Edm.String" MaxLength="40"/>
-                <Property Name="CHAR_NUM" Type="Edm.String" MaxLength="100"/>
-                <Property Name="CHARVAL_NUM" Type="Edm.String" MaxLength="80"/>
-                <Property Name="SELECTED_MONTH" Type="Edm.String" MaxLength="20"/>
-                <Property Name="LAG_MONTH" Type="Edm.Int32"/>
+                <Key>
+                    <PropertyRef Name="FACTORY_LOC"/>
+                    <PropertyRef Name="LOCATION_ID"/>
+                    <PropertyRef Name="PRODUCT_ID"/>
+                    <PropertyRef Name="CHAR_NUM"/>
+                    <PropertyRef Name="CHARVAL_NUM"/>
+                    <PropertyRef Name="SELECTED_MONTH"/>
+                    <PropertyRef Name="LAG_MONTH"/>
+                </Key>
+                <Property Name="FACTORY_LOC" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="PRODUCT_ID" Type="Edm.String" MaxLength="40" Nullable="false"/>
+                <Property Name="CHAR_NUM" Type="Edm.String" MaxLength="100" Nullable="false"/>
+                <Property Name="CHARVAL_NUM" Type="Edm.String" MaxLength="80" Nullable="false"/>
+                <Property Name="SELECTED_MONTH" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <Property Name="LAG_MONTH" Type="Edm.Int32" Nullable="false"/>
                 <Property Name="ACTUAL_MONTH" Type="Edm.String" MaxLength="50"/>
                 <Property Name="LAG_QTY" Type="Edm.Int32"/>
                 <Property Name="ACTUAL_QTY" Type="Edm.Int32"/>
@@ -46,12 +63,20 @@
                 <Property Name="MAPE_QTY" Type="Edm.Int32"/>
             </EntityType>
             <EntityType Name="getRestrictionLag">
-                <Property Name="FACTORY_LOC" Type="Edm.String" MaxLength="4"/>
-                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4"/>
-                <Property Name="LINE_ID" Type="Edm.String" MaxLength="40"/>
-                <Property Name="RESTRICTION" Type="Edm.String" MaxLength="30"/>
-                <Property Name="SELECTED_MONTH" Type="Edm.String" MaxLength="20"/>
-                <Property Name="LAG_MONTH" Type="Edm.Int32"/>
+                <Key>
+                    <PropertyRef Name="FACTORY_LOC"/>
+                    <PropertyRef Name="LOCATION_ID"/>
+                    <PropertyRef Name="LINE_ID"/>
+                    <PropertyRef Name="RESTRICTION"/>
+                    <PropertyRef Name="SELECTED_MONTH"/>
+                    <PropertyRef Name="LAG_MONTH"/>
+                </Key>
+                <Property Name="FACTORY_LOC" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LINE_ID" Type="Edm.String" MaxLength="40" Nullable="false"/>
+                <Property Name="RESTRICTION" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="SELECTED_MONTH" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <Property Name="LAG_MONTH" Type="Edm.Int32" Nullable="false"/>
                 <Property Name="ACTUAL_MONTH" Type="Edm.String" MaxLength="50"/>
                 <Property Name="LAG_QTY" Type="Edm.Int32"/>
                 <Property Name="ACTUAL_QTY" Type="Edm.Int32"/>
@@ -60,11 +85,18 @@
                 <Property Name="MAPE_QTY" Type="Edm.Int32"/>
             </EntityType>
             <EntityType Name="getProductDemandLag">
-                <Property Name="FACTORY_LOC" Type="Edm.String" MaxLength="4"/>
-                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4"/>
-                <Property Name="PRODUCT_ID" Type="Edm.String" MaxLength="40"/>
-                <Property Name="SELECTED_MONTH" Type="Edm.String" MaxLength="20"/>
-                <Property Name="LAG_MONTH" Type="Edm.Int32"/>
+                <Key>
+                    <PropertyRef Name="FACTORY_LOC"/>
+                    <PropertyRef Name="LOCATION_ID"/>
+                    <PropertyRef Name="PRODUCT_ID"/>
+                    <PropertyRef Name="SELECTED_MONTH"/>
+                    <PropertyRef Name="LAG_MONTH"/>
+                </Key>
+                <Property Name="FACTORY_LOC" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="PRODUCT_ID" Type="Edm.String" MaxLength="40" Nullable="false"/>
+                <Property Name="SELECTED_MONTH" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <Property Name="LAG_MONTH" Type="Edm.Int32" Nullable="false"/>
                 <Property Name="ACTUAL_MONTH" Type="Edm.String" MaxLength="50"/>
                 <Property Name="LAG_QTY" Type="Edm.Int32"/>
                 <Property Name="ACTUAL_QTY" Type="Edm.Int32"/>
@@ -73,14 +105,22 @@
                 <Property Name="MAPE_QTY" Type="Edm.Int32"/>
             </EntityType>
             <EntityType Name="getAssemblyLag">
-                <Property Name="FACTORY_LOC" Type="Edm.String" MaxLength="4"/>
-                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4"/>
-                <Property Name="PRODUCT_ID" Type="Edm.String" MaxLength="40"/>
-                <Property Name="ASSEMBLY" Type="Edm.String" MaxLength="200"/>
+                <Key>
+                    <PropertyRef Name="FACTORY_LOC"/>
+                    <PropertyRef Name="LOCATION_ID"/>
+                    <PropertyRef Name="PRODUCT_ID"/>
+                    <PropertyRef Name="ASSEMBLY"/>
+                    <PropertyRef Name="SELECTED_MONTH"/>
+                    <PropertyRef Name="LAG_MONTH"/>
+                </Key>
+                <Property Name="FACTORY_LOC" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LOCATION_ID" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="PRODUCT_ID" Type="Edm.String" MaxLength="40" Nullable="false"/>
+                <Property Name="ASSEMBLY" Type="Edm.String" MaxLength="200" Nullable="false"/>
                 <Property Name="MRP_GROUP" Type="Edm.String" MaxLength="4"/>
                 <Property Name="MRP_TYPE" Type="Edm.String" MaxLength="2"/>
-                <Property Name="SELECTED_MONTH" Type="Edm.String" MaxLength="20"/>
-                <Property Name="LAG_MONTH" Type="Edm.Int32"/>
+                <Property Name="SELECTED_MONTH" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <Property Name="LAG_MONTH" Type="Edm.Int32" Nullable="false"/>
                 <Property Name="ACTUAL_MONTH" Type="Edm.String" MaxLength="50"/>
                 <Property Name="LAG_QTY" Type="Edm.Int32"/>
                 <Property Name="ACTUAL_QTY" Type="Edm.Int32"/>
@@ -571,10 +611,10 @@
                 <Annotation Term="Common.Label" String="Product Description"/>
             </Annotations>
             <Annotations Target="PlannerService.getPlannerLocProd/REF_PRODID">
-                <Annotation Term="Common.Label" String="Reference Product Id"/>
+                <Annotation Term="Common.Label" String="Configurable Product"/>
             </Annotations>
             <Annotations Target="PlannerService.getPlannerLocProd/REFPROD_DESC">
-                <Annotation Term="Common.Label" String="Reference Product Description"/>
+                <Annotation Term="Common.Label" String="Configurable Product Description"/>
             </Annotations>
             <Annotations Target="PlannerService.getPlannerLocProd/MRP_GROUP">
                 <Annotation Term="Common.Label" String="MRP Group"/>
@@ -590,6 +630,221 @@
             </Annotations>
             <Annotations Target="PlannerService.getAssemblyDesc/PROD_DESC">
                 <Annotation Term="Common.Label" String="PRODUCT_ID"/>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyLagfun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/FACTORY_LOCATION">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyLagfun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/LOCATION">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyLagfun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/PRODUCT">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyLagfun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/START_MONTH">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getAssemblyLagfun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/END_MONTH">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPercentLagfun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/FACTORY_LOACATION">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPercentLagfun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/LOCATION">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPercentLagfun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/PRODUCT">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPercentLagfun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/MONTH">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPercentLagfun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/CHARACTERISTIC">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPercentLagfun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/CHARACTERISTIC_VALUE">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPercentLagFun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/FACTORY_LOCATION">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPercentLagFun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/LOCATION">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPercentLagFun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/PRODUCT">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPercentLagFun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/START_MONTH">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getOptPercentLagFun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/END_MONTH">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLagfun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/FACTORY_LOACATION">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLagfun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/LOCATION">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLagfun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/LINE">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLagfun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/RESTRICTION_ID">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLagfun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/MONTH">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLagFun(Edm.String,Edm.String,Edm.String,Edm.String)/FACTORY_LOCATION">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLagFun(Edm.String,Edm.String,Edm.String,Edm.String)/LOCATION">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLagFun(Edm.String,Edm.String,Edm.String,Edm.String)/START_MONTH">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getRestrictionLagFun(Edm.String,Edm.String,Edm.String,Edm.String)/END_MONTH">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getPrdDmdLagfun(Edm.String,Edm.String,Edm.String,Edm.String)/FACTORY_LOACATION">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getPrdDmdLagfun(Edm.String,Edm.String,Edm.String,Edm.String)/LOCATION">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getPrdDmdLagfun(Edm.String,Edm.String,Edm.String,Edm.String)/MONTH">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getPrdDmdLagfun(Edm.String,Edm.String,Edm.String,Edm.String)/PRODUCT">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getStatForecast(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/FACTORY_LOCATION">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getStatForecast(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/LOCATION">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getStatForecast(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/PRODUCT">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getStatForecast(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/START_MONTH">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getStatForecast(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/END_MONTH">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getPrdDmdLagFun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/FACTORY_LOCATION">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getPrdDmdLagFun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/LOCATION">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getPrdDmdLagFun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/PRODUCT">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getPrdDmdLagFun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/START_MONTH">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.getPrdDmdLagFun(Edm.String,Edm.String,Edm.String,Edm.String,Edm.String)/END_MONTH">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.createVariantPlanner(Edm.String,Edm.String,Edm.String)/Flag">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.createVariantPlanner(Edm.String,Edm.String,Edm.String)/USER">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.createVariantPlanner(Edm.String,Edm.String,Edm.String)/VARDATA">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="PlannerService.updateVariantPlanner(Edm.String)/VARDATA">
+                <Annotation Term="Core.OptionalParameter">
+                    <Record Type="Core.OptionalParameterType"/>
+                </Annotation>
             </Annotations>
         </Schema>
     </edmx:DataServices>

@@ -1,6 +1,6 @@
 {
  "meta": {
-  "creator": "cds-dk 9.2.0"
+  "creator": "cds-dk 9.9.4"
  },
  "$version": "2.0",
  "definitions": {
@@ -10,27 +10,42 @@
    "params": {
     "FACTORY_LOCATION": {
      "type": "cds.String",
-     "length": 10
+     "length": 10,
+     "default": {
+      "val": null
+     }
     },
     "LOCATION": {
      "type": "cds.String",
-     "length": 10
+     "length": 10,
+     "default": {
+      "val": null
+     }
     },
     "PRODUCT": {
      "type": "cds.String",
-     "length": 40
+     "length": 40,
+     "default": {
+      "val": null
+     }
     },
     "START_MONTH": {
      "type": "cds.String",
-     "length": 20
+     "length": 20,
+     "default": {
+      "val": null
+     }
     },
     "END_MONTH": {
      "type": "cds.String",
-     "length": 20
+     "length": 20,
+     "default": {
+      "val": null
+     }
     }
    },
    "returns": {
-    "type": "cds.LargeString"
+    "type": "cds.String"
    }
   },
   "planner.getOptPercentLagfun": {
@@ -39,31 +54,49 @@
    "params": {
     "FACTORY_LOACATION": {
      "type": "cds.String",
-     "length": 10
+     "length": 10,
+     "default": {
+      "val": null
+     }
     },
     "LOCATION": {
      "type": "cds.String",
-     "length": 10
+     "length": 10,
+     "default": {
+      "val": null
+     }
     },
     "PRODUCT": {
      "type": "cds.String",
-     "length": 40
+     "length": 40,
+     "default": {
+      "val": null
+     }
     },
     "MONTH": {
      "type": "cds.String",
-     "length": 40
+     "length": 40,
+     "default": {
+      "val": null
+     }
     },
     "CHARACTERISTIC": {
      "type": "cds.String",
-     "length": 100
+     "length": 100,
+     "default": {
+      "val": null
+     }
     },
     "CHARACTERISTIC_VALUE": {
      "type": "cds.String",
-     "length": 100
+     "length": 100,
+     "default": {
+      "val": null
+     }
     }
    },
    "returns": {
-    "type": "cds.LargeString"
+    "type": "cds.String"
    }
   },
   "planner.getOptPercentLagFun": {
@@ -72,27 +105,42 @@
    "params": {
     "FACTORY_LOCATION": {
      "type": "cds.String",
-     "length": 10
+     "length": 10,
+     "default": {
+      "val": null
+     }
     },
     "LOCATION": {
      "type": "cds.String",
-     "length": 10
+     "length": 10,
+     "default": {
+      "val": null
+     }
     },
     "PRODUCT": {
      "type": "cds.String",
-     "length": 40
+     "length": 40,
+     "default": {
+      "val": null
+     }
     },
     "START_MONTH": {
      "type": "cds.String",
-     "length": 20
+     "length": 20,
+     "default": {
+      "val": null
+     }
     },
     "END_MONTH": {
      "type": "cds.String",
-     "length": 20
+     "length": 20,
+     "default": {
+      "val": null
+     }
     }
    },
    "returns": {
-    "type": "cds.LargeString"
+    "type": "cds.String"
    }
   },
   "planner.getRestrictionLagfun": {
@@ -101,27 +149,42 @@
    "params": {
     "FACTORY_LOACATION": {
      "type": "cds.String",
-     "length": 10
+     "length": 10,
+     "default": {
+      "val": null
+     }
     },
     "LOCATION": {
      "type": "cds.String",
-     "length": 10
+     "length": 10,
+     "default": {
+      "val": null
+     }
     },
     "LINE": {
      "type": "cds.String",
-     "length": 40
+     "length": 40,
+     "default": {
+      "val": null
+     }
     },
     "RESTRICTION_ID": {
      "type": "cds.String",
-     "length": 50
+     "length": 50,
+     "default": {
+      "val": null
+     }
     },
     "MONTH": {
      "type": "cds.String",
-     "length": 40
+     "length": 40,
+     "default": {
+      "val": null
+     }
     }
    },
    "returns": {
-    "type": "cds.LargeString"
+    "type": "cds.String"
    }
   },
   "planner.getRestrictionLagFun": {
@@ -130,23 +193,35 @@
    "params": {
     "FACTORY_LOCATION": {
      "type": "cds.String",
-     "length": 10
+     "length": 10,
+     "default": {
+      "val": null
+     }
     },
     "LOCATION": {
      "type": "cds.String",
-     "length": 10
+     "length": 10,
+     "default": {
+      "val": null
+     }
     },
     "START_MONTH": {
      "type": "cds.String",
-     "length": 20
+     "length": 20,
+     "default": {
+      "val": null
+     }
     },
     "END_MONTH": {
      "type": "cds.String",
-     "length": 20
+     "length": 20,
+     "default": {
+      "val": null
+     }
     }
    },
    "returns": {
-    "type": "cds.LargeString"
+    "type": "cds.String"
    }
   },
   "planner.getPrdDmdLagfun": {
@@ -155,23 +230,79 @@
    "params": {
     "FACTORY_LOACATION": {
      "type": "cds.String",
-     "length": 10
+     "length": 10,
+     "default": {
+      "val": null
+     }
     },
     "LOCATION": {
      "type": "cds.String",
-     "length": 10
+     "length": 10,
+     "default": {
+      "val": null
+     }
     },
     "MONTH": {
      "type": "cds.String",
-     "length": 40
+     "length": 40,
+     "default": {
+      "val": null
+     }
     },
     "PRODUCT": {
      "type": "cds.String",
-     "length": 40
+     "length": 40,
+     "default": {
+      "val": null
+     }
     }
    },
    "returns": {
-    "type": "cds.LargeString"
+    "type": "cds.String"
+   }
+  },
+  "planner.getStatForecast": {
+   "kind": "function",
+   "@cds.external": true,
+   "params": {
+    "FACTORY_LOCATION": {
+     "type": "cds.String",
+     "length": 10,
+     "default": {
+      "val": null
+     }
+    },
+    "LOCATION": {
+     "type": "cds.String",
+     "length": 10,
+     "default": {
+      "val": null
+     }
+    },
+    "PRODUCT": {
+     "type": "cds.String",
+     "length": 40,
+     "default": {
+      "val": null
+     }
+    },
+    "START_MONTH": {
+     "type": "cds.String",
+     "length": 20,
+     "default": {
+      "val": null
+     }
+    },
+    "END_MONTH": {
+     "type": "cds.String",
+     "length": 20,
+     "default": {
+      "val": null
+     }
+    }
+   },
+   "returns": {
+    "type": "cds.String"
    }
   },
   "planner.getPrdDmdLagFun": {
@@ -180,27 +311,42 @@
    "params": {
     "FACTORY_LOCATION": {
      "type": "cds.String",
-     "length": 10
+     "length": 10,
+     "default": {
+      "val": null
+     }
     },
     "LOCATION": {
      "type": "cds.String",
-     "length": 10
+     "length": 10,
+     "default": {
+      "val": null
+     }
     },
     "PRODUCT": {
      "type": "cds.String",
-     "length": 40
+     "length": 40,
+     "default": {
+      "val": null
+     }
     },
     "START_MONTH": {
      "type": "cds.String",
-     "length": 20
+     "length": 20,
+     "default": {
+      "val": null
+     }
     },
     "END_MONTH": {
      "type": "cds.String",
-     "length": 20
+     "length": 20,
+     "default": {
+      "val": null
+     }
     }
    },
    "returns": {
-    "type": "cds.LargeString"
+    "type": "cds.String"
    }
   },
   "planner.createVariantPlanner": {
@@ -208,17 +354,26 @@
    "@cds.external": true,
    "params": {
     "Flag": {
-     "type": "cds.LargeString"
+     "type": "cds.String",
+     "default": {
+      "val": null
+     }
     },
     "USER": {
-     "type": "cds.LargeString"
+     "type": "cds.String",
+     "default": {
+      "val": null
+     }
     },
     "VARDATA": {
-     "type": "cds.LargeString"
+     "type": "cds.String",
+     "default": {
+      "val": null
+     }
     }
    },
    "returns": {
-    "type": "cds.LargeString"
+    "type": "cds.String"
    }
   },
   "planner.updateVariantPlanner": {
@@ -226,11 +381,14 @@
    "@cds.external": true,
    "params": {
     "VARDATA": {
-     "type": "cds.LargeString"
+     "type": "cds.String",
+     "default": {
+      "val": null
+     }
     }
    },
    "returns": {
-    "type": "cds.LargeString"
+    "type": "cds.String"
    }
   },
   "planner.getOptionPercentageLag": {
@@ -239,42 +397,51 @@
    "@cds.persistence.skip": true,
    "elements": {
     "FACTORY_LOC": {
+     "key": true,
      "type": "cds.String",
      "length": 4,
-     "@Common.Label": "FACTORY_LOC",
-     "key":true
+     "notNull": true,
+     "@Common.Label": "FACTORY_LOC"
     },
     "LOCATION_ID": {
+     "key": true,
      "type": "cds.String",
      "length": 4,
-     "@Common.Label": "LOCATION_ID",
-     "key":true
+     "notNull": true,
+     "@Common.Label": "LOCATION_ID"
     },
     "PRODUCT_ID": {
+     "key": true,
      "type": "cds.String",
      "length": 40,
-     "@Common.Label": "PRODUCT_ID",
-     "key":true
+     "notNull": true,
+     "@Common.Label": "PRODUCT_ID"
     },
     "CHAR_NUM": {
+     "key": true,
      "type": "cds.String",
      "length": 100,
-     "@Common.Label": "Characteristic Number",
-     "key":true
+     "notNull": true,
+     "@Common.Label": "Characteristic Number"
     },
     "CHARVAL_NUM": {
+     "key": true,
      "type": "cds.String",
      "length": 80,
-     "@Common.Label": "Characteristic Value Number",
-     "key":true
+     "notNull": true,
+     "@Common.Label": "Characteristic Value Number"
     },
     "SELECTED_MONTH": {
+     "key": true,
      "type": "cds.String",
      "length": 20,
+     "notNull": true,
      "@Common.Label": "MONTH"
     },
     "LAG_MONTH": {
+     "key": true,
      "type": "cds.Integer",
+     "notNull": true,
      "@Common.Label": "LAG_MONTH"
     },
     "ACTUAL_MONTH": {
@@ -310,36 +477,110 @@
    "@cds.persistence.skip": true,
    "elements": {
     "FACTORY_LOC": {
+     "key": true,
      "type": "cds.String",
      "length": 4,
-     "@Common.Label": "FACTORY_LOC",
-     "key":true
+     "notNull": true,
+     "@Common.Label": "FACTORY_LOC"
     },
     "LOCATION_ID": {
+     "key": true,
      "type": "cds.String",
      "length": 4,
-     "@Common.Label": "LOCATION_ID",
-     "key":true
+     "notNull": true,
+     "@Common.Label": "LOCATION_ID"
     },
     "LINE_ID": {
+     "key": true,
      "type": "cds.String",
      "length": 40,
-     "@Common.Label": "Line",
-     "key":true
+     "notNull": true,
+     "@Common.Label": "Line"
     },
     "RESTRICTION": {
+     "key": true,
      "type": "cds.String",
      "length": 30,
-     "@Common.Label": "Restriction",
-     "key":true
+     "notNull": true,
+     "@Common.Label": "Restriction"
     },
     "SELECTED_MONTH": {
+     "key": true,
      "type": "cds.String",
      "length": 20,
+     "notNull": true,
      "@Common.Label": "MONTH"
     },
     "LAG_MONTH": {
+     "key": true,
      "type": "cds.Integer",
+     "notNull": true,
+     "@Common.Label": "LAG_MONTH"
+    },
+    "ACTUAL_MONTH": {
+     "type": "cds.String",
+     "length": 50,
+     "@Common.Label": "ACTUAL_MONTH"
+    },
+    "LAG_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "LAG_QTY"
+    },
+    "ACTUAL_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "ACTUAL_QTY"
+    },
+    "MAPE": {
+     "type": "cds.Integer",
+     "@Common.Label": "ACTUAL_QTY"
+    },
+    "MAPE_QTY_ABS": {
+     "type": "cds.Integer",
+     "@Common.Label": "MAPE_QTY_ABS"
+    },
+    "MAPE_QTY": {
+     "type": "cds.Integer",
+     "@Common.Label": "MAPE_QTY"
+    }
+   }
+  },
+  "planner.getProductDemandLag": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "FACTORY_LOC": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true,
+     "@Common.Label": "FACTORY_LOC"
+    },
+    "LOCATION_ID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true,
+     "@Common.Label": "LOCATION_ID"
+    },
+    "PRODUCT_ID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 40,
+     "notNull": true,
+     "@Common.Label": "PRODUCT_ID"
+    },
+    "SELECTED_MONTH": {
+     "key": true,
+     "type": "cds.String",
+     "length": 20,
+     "notNull": true,
+     "@Common.Label": "MONTH"
+    },
+    "LAG_MONTH": {
+     "key": true,
+     "type": "cds.Integer",
+     "notNull": true,
      "@Common.Label": "LAG_MONTH"
     },
     "ACTUAL_MONTH": {
@@ -375,23 +616,31 @@
    "@cds.persistence.skip": true,
    "elements": {
     "FACTORY_LOC": {
+     "key": true,
      "type": "cds.String",
      "length": 4,
+     "notNull": true,
      "@Common.Label": "FACTORY_LOC"
     },
     "LOCATION_ID": {
+     "key": true,
      "type": "cds.String",
      "length": 4,
+     "notNull": true,
      "@Common.Label": "LOCATION_ID"
     },
     "PRODUCT_ID": {
+     "key": true,
      "type": "cds.String",
      "length": 40,
+     "notNull": true,
      "@Common.Label": "PRODUCT_ID"
     },
     "ASSEMBLY": {
+     "key": true,
      "type": "cds.String",
      "length": 200,
+     "notNull": true,
      "@Common.Label": "ASSEMBLY"
     },
     "MRP_GROUP": {
@@ -405,34 +654,34 @@
      "@Common.Label": "MRP Type"
     },
     "SELECTED_MONTH": {
+     "key": true,
      "type": "cds.String",
      "length": 20,
+     "notNull": true,
      "@Common.Label": "MONTH"
     },
     "LAG_MONTH": {
+     "key": true,
      "type": "cds.Integer",
+     "notNull": true,
      "@Common.Label": "LAG_MONTH"
     },
     "ACTUAL_MONTH": {
      "type": "cds.String",
      "length": 50,
-     "@Common.Label": "ACTUAL_MONTH",
-      "key":true
+     "@Common.Label": "ACTUAL_MONTH"
     },
     "LAG_QTY": {
      "type": "cds.Integer",
-     "@Common.Label": "LAG_QTY",
-      "key":true
+     "@Common.Label": "LAG_QTY"
     },
     "ACTUAL_QTY": {
      "type": "cds.Integer",
-     "@Common.Label": "ACTUAL_QTY",
-      "key":true
+     "@Common.Label": "ACTUAL_QTY"
     },
     "MAPE": {
      "type": "cds.Integer",
-     "@Common.Label": "ACTUAL_QTY",
-      "key":true
+     "@Common.Label": "ACTUAL_QTY"
     },
     "MAPE_QTY_ABS": {
      "type": "cds.Integer",
@@ -778,12 +1027,12 @@
      "type": "cds.String",
      "length": 40,
      "notNull": true,
-     "@Common.Label": "Reference Product Id"
+     "@Common.Label": "Configurable Product"
     },
     "REFPROD_DESC": {
      "type": "cds.String",
      "length": 100,
-     "@Common.Label": "Reference Product Description"
+     "@Common.Label": "Configurable Product Description"
     },
     "MRP_GROUP": {
      "type": "cds.String",

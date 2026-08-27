@@ -1,13 +1,47 @@
 {
  "meta": {
-  "creator": "cds-dk 9.2.0"
+  "creator": "cds-dk 9.9.4"
  },
  "$version": "2.0",
  "definitions": {
-  "alerts": {
-   "kind": "service",
+  "alerts.getfactorylocdesc": {
+   "kind": "function",
    "@cds.external": true,
-   "@m.IsDefaultEntityContainer": "true"
+   "returns": {
+    "type": "cds.String"
+   }
+  },
+  "alerts.maintainAlertLogs": {
+   "kind": "action",
+   "@cds.external": true,
+   "params": {
+    "FLAG": {
+     "type": "cds.String"
+    },
+    "USERNAME": {
+     "type": "cds.String"
+    },
+    "OBJ": {
+     "type": "cds.String"
+    }
+   },
+   "returns": {
+    "type": "cds.String"
+   }
+  },
+  "alerts.purgeAlerts": {
+   "kind": "action",
+   "@cds.external": true,
+   "returns": {
+    "type": "cds.String"
+   }
+  },
+  "alerts.upsertAlertLog": {
+   "kind": "action",
+   "@cds.external": true,
+   "returns": {
+    "type": "cds.String"
+   }
   },
   "alerts.getAlertLogs": {
    "kind": "entity",
@@ -17,40 +51,47 @@
     "LOG_ID": {
      "key": true,
      "type": "cds.Integer",
-     "notNull": true
+     "notNull": true,
+     "@Common.Label": "Log ID"
     },
     "APPL": {
      "key": true,
      "type": "cds.String",
      "length": 100,
-     "notNull": true
+     "notNull": true,
+     "@Common.Label": "Application Name"
     },
     "MSGID": {
      "key": true,
      "type": "cds.String",
      "length": 3,
-     "notNull": true
+     "notNull": true,
+     "@Common.Label": "Message ID"
     },
     "MSGGRP": {
      "key": true,
      "type": "cds.String",
      "length": 20,
-     "notNull": true
+     "notNull": true,
+     "@Common.Label": "Message Group"
     },
     "EXP_DATE": {
      "type": "cds.Date",
-     "@sap.display.format": "Date"
+     "@Common.Label": "Expiry Date"
     },
     "LOCATION_ID": {
      "type": "cds.String",
-     "length": 4
+     "length": 4,
+     "@Common.Label": "Location"
     },
     "PRODUCT_ID": {
      "type": "cds.String",
-     "length": 40
+     "length": 40,
+     "@Common.Label": "Product"
     },
     "MSGTXT": {
-     "type": "cds.LargeString"
+     "type": "cds.String",
+     "@Common.Label": "Message Text"
     },
     "PARA1": {
      "type": "cds.String",
@@ -93,21 +134,28 @@
      "length": 100
     },
     "CREATED_BY": {
-     "type": "cds.LargeString"
+     "type": "cds.String",
+     "@Common.Label": "Created By"
     },
     "CREATED_TIME": {
      "type": "cds.Timestamp",
+     "@odata.Precision": 7,
      "@odata.Type": "Edm.DateTimeOffset",
-     "@odata.Precision": 7
+     "@Common.Label": "Created Time"
     },
     "LOGMSG": {
-     "type": "cds.LargeString"
+     "type": "cds.String",
+     "@Common.Label": "Log Message"
     },
     "MSGTYP": {
      "type": "cds.String",
-     "length": 1
+     "length": 1,
+     "@Common.Label": "Message Type"
     }
-   }
+   },
+   "@Capabilities.DeleteRestrictions.Deletable": false,
+   "@Capabilities.InsertRestrictions.Insertable": false,
+   "@Capabilities.UpdateRestrictions.Updatable": false
   },
   "alerts.getApplications": {
    "kind": "entity",
@@ -152,41 +200,50 @@
      "key": true,
      "type": "cds.String",
      "length": 100,
-     "notNull": true
+     "notNull": true,
+     "@Common.Label": "Application Name"
     },
     "MSGID": {
      "key": true,
      "type": "cds.String",
      "length": 3,
-     "notNull": true
+     "notNull": true,
+     "@Common.Label": "Message ID"
     },
     "MSGGRP": {
      "key": true,
      "type": "cds.String",
      "length": 20,
-     "notNull": true
+     "notNull": true,
+     "@Common.Label": "Message Group"
     },
     "MSGTYP": {
      "type": "cds.String",
-     "length": 1
+     "length": 1,
+     "@Common.Label": "Message Type"
     },
     "MSGTXT": {
      "type": "cds.String",
-     "length": 120
+     "length": 120,
+     "@Common.Label": "Message Text"
     },
     "MSGDESC": {
-     "type": "cds.LargeString"
+     "type": "cds.String",
+     "@Common.Label": "Message Description"
     },
     "VALID_DAYS": {
-     "type": "cds.Integer"
+     "type": "cds.Integer",
+     "@Common.Label": "Validity Days"
     },
     "LOCATION_ID": {
      "type": "cds.String",
-     "length": 4
+     "length": 4,
+     "@Common.Label": "Location"
     },
     "PRODUCT_ID": {
      "type": "cds.String",
-     "length": 40
+     "length": 40,
+     "@Common.Label": "Product"
     },
     "PARA1": {
      "type": "cds.String",
@@ -249,54 +306,64 @@
     },
     "APPL": {
      "key": true,
-     "type": "cds.LargeString",
-     "notNull": true
+     "type": "cds.String",
+     "notNull": true,
+     "@Common.Label": "Application Name"
     },
     "MSGID": {
      "key": true,
      "type": "cds.String",
      "length": 3,
-     "notNull": true
+     "notNull": true,
+     "@Common.Label": "Message ID"
     },
     "MSGGRP": {
      "key": true,
      "type": "cds.String",
      "length": 20,
-     "notNull": true
+     "notNull": true,
+     "@Common.Label": "Message Group"
     },
     "LOCATION_ID": {
      "key": true,
      "type": "cds.String",
      "length": 4,
-     "notNull": true
+     "notNull": true,
+     "@Common.Label": "Location"
     },
     "PRODUCT_ID": {
      "key": true,
      "type": "cds.String",
      "length": 40,
-     "notNull": true
+     "notNull": true,
+     "@Common.Label": "Product"
+    },
+    "MSGTXT": {
+     "type": "cds.String",
+     "@Common.Label": "Message Text"
     },
     "SUCCESS_COUNT": {
      "key": true,
      "type": "cds.Integer",
-     "notNull": true
+     "notNull": true,
+     "@Common.Label": "Success Jobs Count"
     },
     "ERROR_COUNT": {
      "key": true,
      "type": "cds.Integer",
-     "notNull": true
+     "notNull": true,
+     "@Common.Label": "Error Jobs Count"
     },
     "WARNING_COUNT": {
      "key": true,
      "type": "cds.Integer",
-     "notNull": true
-    },
-    "MSGTXT": {
-     "type": "cds.LargeString"
+     "notNull": true,
+     "@Common.Label": "Warning Jobs Count"
     },
     "MESSAGE": {
      "type": "cds.String",
-     "length": 120
+     "length": 120,
+     "@Common.Label": "Message"
     }
    }
   },
@@ -326,37 +393,9 @@
     }
    }
   },
-  "alerts.getfactorylocdesc": {
-   "kind": "function",
-   "@cds.external": true,
-   "returns": {
-    "type": "cds.LargeString"
-   }
-  },
-  "alerts.maintainAlertLogs": {
-   "kind": "action",
-   "@cds.external": true,
-   "params": {
-    "FLAG": {
-     "type": "cds.LargeString"
-    },
-    "USERNAME": {
-     "type": "cds.LargeString"
-    },
-    "OBJ": {
-     "type": "cds.LargeString"
-    }
-   },
-   "returns": {
-    "type": "cds.LargeString"
-   }
-  },
-  "alerts.purgeAlerts": {
-   "kind": "action",
-   "@cds.external": true,
-   "returns": {
-    "type": "cds.LargeString"
-   }
+  "alerts": {
+   "kind": "service",
+   "@cds.external": true
   }
  }
 }

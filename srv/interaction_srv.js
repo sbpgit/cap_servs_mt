@@ -678,12 +678,14 @@ module.exports = async srv => {
         try {
             let PRODUCT_ID = req.data.PRODUCT_ID;
 
-            let SALESH = await cds.run(
-                SELECT.from("APP_DB_SALESH_STB").where({ PRODUCT_ID })
-            );
-
+            let SALESH = await cds.run(`SELECT * FROM "APP_DB_SALESH_STB" WHERE PRODUCT_ID = '${PRODUCT_ID}'`);
+                        
             let SALES_CONFIG = await cds.run(
-                SELECT.from("APP_DB_SALESH_CONFIG_STB").where({ PRODUCT_ID })
+                SELECT.from("APP_DB_SALESH_CONFIG_STB").where({ PRODUCT_ID }).orderBy(
+                    "SALES_DOCUMENT",
+                    "CHARACTERSTIC",
+                    "CHARACTERSTIC_VALUE"
+                )
             );
 
             let ConfigByDoc = new Map();
@@ -707,10 +709,6 @@ module.exports = async srv => {
                             CHARACTERSTIC: r.CHARACTERSTIC,
                             CHARACTERSTIC_VALUE: r.CHARACTERSTIC_VALUE
                         }))
-                        .sort((a, b) =>
-                            (a.CHARACTERSTIC + a.CHARACTERSTIC_VALUE)
-                                .localeCompare(b.CHARACTERSTIC + b.CHARACTERSTIC_VALUE)
-                        )
                 );
 
                 if (!FinalGroups.has(compareKey)) {
@@ -730,9 +728,9 @@ module.exports = async srv => {
             const Payload = [...FinalGroups.values()];
 
             for (const group of Payload) {
+                console.log("Running salesdoc: ", group.aSalesH.length)
                 await apiCall(group, group.aSalesH, req);
             }
-
 
         }
         catch (error) {
@@ -1819,7 +1817,7 @@ module.exports = async srv => {
             .replace("cap-servs-mt", "vcplanner-mt");
 
         const response = await axios.post(
-            dominurl + "salesDeltaProcess",
+            dominurl + "salesDeltaProcessBatch",
             {
                 SALESDATA: JSON.stringify(payload)
             },
