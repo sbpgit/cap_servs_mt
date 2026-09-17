@@ -677,14 +677,19 @@ module.exports = async srv => {
     srv.on('ExportToVCP', async (req, res) => {
         try {
             let PRODUCT_ID = req.data.PRODUCT_ID;
+            
+            let SALESH = await cds.run(
+                `SELECT * FROM "APP_DB_SALESH_STB" WHERE PRODUCT_ID = '${PRODUCT_ID}'`
+            );
 
-            let SALESH = await cds.run(`SELECT * FROM "APP_DB_SALESH_STB" WHERE PRODUCT_ID = '${PRODUCT_ID}'`);
-                        
             let SALES_CONFIG = await cds.run(
-                SELECT.from("APP_DB_SALESH_CONFIG_STB").where({ PRODUCT_ID }).orderBy(
-                    "SALES_DOCUMENT",
-                    "CHARACTERSTIC",
-                    "CHARACTERSTIC_VALUE"
+                SELECT.from("APP_DB_SALESH_CONFIG_STB")
+                    .where({ PRODUCT_ID })
+                    .orderBy(
+                        "SALES_DOCUMENT",
+                        "SALES_DOCUMENT_ITEM",
+                        "CHARACTERSTIC",
+                        "CHARACTERSTIC_VALUE"
                 )
             );
 
@@ -692,16 +697,18 @@ module.exports = async srv => {
 
             for (const row of SALES_CONFIG) {
 
-                if (!ConfigByDoc.has(row.SALES_DOCUMENT)) {
-                    ConfigByDoc.set(row.SALES_DOCUMENT, []);
+                const docItemKey = `${row.SALES_DOCUMENT}|${row.SALES_DOCUMENT_ITEM}`;
+
+                if (!ConfigByDoc.has(docItemKey)) {
+                    ConfigByDoc.set(docItemKey, []);
                 }
 
-                ConfigByDoc.get(row.SALES_DOCUMENT).push(row);
+                ConfigByDoc.get(docItemKey).push(row);
             }
 
             let FinalGroups = new Map();
 
-            for (const [salesDoc, configRows] of ConfigByDoc) {
+            for (const [docItemKey, configRows] of ConfigByDoc) {
 
                 let compareKey = JSON.stringify(
                     configRows
@@ -718,7 +725,12 @@ module.exports = async srv => {
                     });
                 }
 
-                let header = SALESH.find(h => h.SALES_DOCUMENT === salesDoc);
+                const [salesDoc, salesDocItem] = docItemKey.split("|");
+
+                let header = SALESH.find(h =>
+                    h.SALES_DOCUMENT == salesDoc &&
+                    h.SALES_DOCUMENT_ITEM == salesDocItem
+                );
 
                 if (header) {
                     FinalGroups.get(compareKey).aSalesH.push(header);
@@ -736,7 +748,95 @@ module.exports = async srv => {
         catch (error) {
             console.log(error.message);
         }
-    })
+    });
+
+  
+    // srv.on('ExportToVCP', async (req, res) => {
+    //     try {
+    //         let PRODUCT_ID = req.data.PRODUCT_ID;
+    //         let sales_document = []
+
+    //         let SALESH = await cds.run(
+    //             `SELECT * FROM "APP_DB_SALESH_STB" WHERE PRODUCT_ID = '${PRODUCT_ID}'`
+    //         );
+    //         const salesDocSet = new Set(sales_document);
+
+    //         SALESH = SALESH.filter(row => salesDocSet.has(row.SALES_DOCUMENT));
+
+    //         let SALES_CONFIG = await cds.run(
+    //             SELECT.from("APP_DB_SALESH_CONFIG_STB")
+    //                 .where({ PRODUCT_ID })
+    //                 .orderBy(
+    //                     "SALES_DOCUMENT",
+    //                     "SALES_DOCUMENT_ITEM",
+    //                     "CHARACTERSTIC",
+    //                     "CHARACTERSTIC_VALUE"
+    //                 )
+    //         );
+
+    //         SALES_CONFIG = SALES_CONFIG.filter(row =>
+    //             salesDocSet.has(row.SALES_DOCUMENT)
+    //         );
+    //         let ConfigByDoc = new Map();
+
+    //         for (const row of SALES_CONFIG) {
+
+    //             // Compare both SALES_DOCUMENT and SALES_DOCUMENT_ITEM
+    //             const docItemKey = `${row.SALES_DOCUMENT}|${row.SALES_DOCUMENT_ITEM}`;
+
+    //             if (!ConfigByDoc.has(docItemKey)) {
+    //                 ConfigByDoc.set(docItemKey, []);
+    //             }
+
+    //             ConfigByDoc.get(docItemKey).push(row);
+    //         }
+
+    //         let FinalGroups = new Map();
+
+    //         for (const [docItemKey, configRows] of ConfigByDoc) {
+
+    //             let compareKey = JSON.stringify(
+    //                 configRows.map(r => ({
+    //                     CHARACTERSTIC: r.CHARACTERSTIC,
+    //                     CHARACTERSTIC_VALUE: r.CHARACTERSTIC_VALUE
+    //                 }))
+    //             );
+
+    //             if (!FinalGroups.has(compareKey)) {
+    //                 FinalGroups.set(compareKey, {
+    //                     aSalesH: [],
+    //                     aSalesHConfig: configRows
+    //                 });
+    //             }
+
+    //             const [salesDoc, salesDocItem] = docItemKey.split("|");
+
+    //             // Compare BOTH SALES_DOCUMENT and SALES_DOCUMENT_ITEM
+    //             let header = SALESH.find(h =>
+    //                 h.SALES_DOCUMENT == salesDoc &&
+    //                 h.SALES_DOCUMENT_ITEM == salesDocItem
+    //             );
+
+    //             if (header) {
+    //                 FinalGroups.get(compareKey).aSalesH.push(header);
+    //             }
+    //         }
+
+    //         const Payload = [...FinalGroups.values()];
+
+    //         for (const group of Payload) {
+    //             console.log(
+    //                 "Running salesdoc: ",
+    //                 group.aSalesH.length
+    //             );
+
+    //             await apiCall(group, group.aSalesH, req);
+    //         }
+
+    //     } catch (error) {
+    //         console.log(error.message);
+    //     }
+    // });
     srv.on('insertBomDepn', async (req, res) => {
         let getVaildationResponse = await Ext_Process.BOM_EXT_VAILD1(req)
         var data = await cds.run(SELECT.from("SELECTIONOPTIONS"))
