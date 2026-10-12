@@ -419,10 +419,11 @@ context interactionstype {
         VALID_TO      : String(20);
         COMP_TYPE     : String(4);
         PROD_DESC     : String(40);
-        COMPONENT_QTY : String(18);
-        UOM           : Double;
+        COMPONENT_QTY : Decimal(13,3);
+        UOM           : String(8);
         CRITICAL_COMP : String(1);
         CHANGE_NO     : String(12);
+        DELETE_FLAG   : String(1);
         CHANGED_DATE  : String(20);
         CHANGED_TIME  : String(20);
         CHANGED_BY    : String(12);

@@ -1365,6 +1365,11 @@ module.exports = async srv => {
     })
     srv.on('insertAssComp', async (req) => {
         let { Assembly } = req.data;
+        let Interfaces = await cds.run(SELECT.from("SELECTIONOPTIONS"))
+        let FilteredInterafce = Interfaces.filter(i => {
+            return i.SERVICE_NAME == 'ASSEMBLY INTERFACE' && i.PARAMETER_NAME == 'CREATE'
+        })
+
         var curent_time = await Ext_Process.CURRENT_TIME()
         var intf_payload = {
             LOGID: uuidv4(),
@@ -1374,24 +1379,67 @@ module.exports = async srv => {
             CREATED_TIME: curent_time
         }
         try {
-            (Assembly.length > 0) ? await cds.run(INSERT.into("APP_DB_ASS_COMP_STB").entries(Assembly)) : "";
-            intf_payload['STATUS_TYPE'] = "Success";
-            intf_payload['STATUS_CODE'] = 201;
-            await cds.run(INSERT.into("APP_DB_INTERFACELOGINFO").entries(intf_payload))
 
-            return {
-                MESSAGE: Assembly.map(i => {
-                    let obj = {};
-                    obj['LOCATION_ID'] = i.LOCATION_ID;
-                    obj['ASSEMBLY'] = i.ASSEMBLY;
-                    obj['SUB_COMP'] = i.SUB_COMP;
-                    obj['STATUS_CODE'] = 200;
-                    obj['STATUS_TYPE'] = 'Success';
-                    return obj
+
+            if (FilteredInterafce[0].VALUE_ID == 'N') {
+                req.reply({
+                    "type": "Error",
+                    "description": "The requested resource could not be found or is not accessible.",
+                    "statusCode": 404
                 })
+                await cds.run(INSERT.into("APP_DB_INTERFACELOGINFO").entries(intf_payload))
             }
+
+            if (FilteredInterafce[0].VALUE_ID == 'M') {
+                    (Assembly.length > 0) ? await cds.run(INSERT.into("APP_DB_ASS_COMP_STB").entries(Assembly)) : "";
+                intf_payload['STATUS_TYPE'] = "Success";
+                intf_payload['STATUS_CODE'] = 201;
+                await cds.run(INSERT.into("APP_DB_INTERFACELOGINFO").entries(intf_payload))
+
+                return {
+                    MESSAGE: Assembly.map(i => {
+                        let obj = {};
+                        obj['LOCATION_ID'] = i.LOCATION_ID;
+                        obj['ASSEMBLY'] = i.ASSEMBLY;
+                        obj['SUB_COMP'] = i.SUB_COMP;
+                        obj['STATUS_CODE'] = 200;
+                        obj['STATUS_TYPE'] = 'Success';
+                        return obj
+                    })
+                }
+
+            }
+
+            if (FilteredInterafce[0].VALUE_ID == 'AU') {
+
+                let token = await Ext_Process.generateBearerToken(req);
+                let dominurl = ("https://" + await GenerateUrl() + `/v2/catalog/`).replace('cap-servs-mt', 'vcplanner-mt');
+                let create_transactions = await axios.post(dominurl + "productData", {
+                    PRODUCTDATA: JSON.stringify({
+                        ASSEMBLY_COMP: Assembly
+                    })
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    }
+                })
+
+                return {
+                    MESSAGE: Assembly.map(i => {
+                        let obj = {};
+                        obj['LOCATION_ID'] = i.LOCATION_ID;
+                        obj['ASSEMBLY'] = i.ASSEMBLY;
+                        obj['SUB_COMP'] = i.SUB_COMP;
+                        obj['STATUS_CODE'] = 200;
+                        obj['STATUS_TYPE'] = 'Success';
+                        return obj
+                    })
+                }
+
+            }
+
         } catch (error) {
-            consolelog(error.message)
+            console.log(error.message)
         }
     })
     srv.on('insertDerivedCharac', async (req) => {
