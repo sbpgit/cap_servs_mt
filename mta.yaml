@@ -85,7 +85,7 @@ resources:
         xsappname: cap_servs_mt-${org}-${space}
         appName: cap_servs_mt-${org}-${space}
         displayName: cap_servs_mt
-        description: CAP Services application.
+        description: Interface application.
         category: 'VC Planner Subscriptions'
         appUrls:
           getDependencies: ~{mtx-api/mtx-url}/-/cds/saas-provisioning/dependencies

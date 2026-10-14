@@ -22,7 +22,7 @@ class External_Call {
     let client_id = user_provided_credentials.clientid;
     let client_secret = user_provided_credentials.clientsecret;
     // let TokenUrl = user_provided_credentials.url + "/oauth/token";
-    let TokenUrl = user_provided_credentials.url.replace("mttsbpdigital",subdomain) + "/oauth/token";
+    let TokenUrl = user_provided_credentials.url.replace("sbp-mttdev",subdomain) + "/oauth/token";
     const params = new URLSearchParams();
 
     params.append('grant_type', 'client_credentials');

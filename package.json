@@ -78,12 +78,12 @@
         "model": "srv/external/config_products",
         "[development]": {
           "credentials": {
-            "url": "https://sbpmtt-dev-vcplanner-mt-srv.cfapps.us10-001.hana.ondemand.com/catalog"
+            "url": "https://sbp-mttdev-dev-vcplanner-mt-srv.cfapps.us10-001.hana.ondemand.com/catalog"
           }
         },
         "[production]": {
           "credentials": {
-            "destination": "ConfigProdAuth",
+            "destination": "ConfigProdoAuth",
             "path": "v2/catalog"
           }
         }
@@ -93,7 +93,7 @@
         "model": "srv/external/alerts",
         "[development]": {
           "credentials": {
-            "url": "https://sbpmtt-dev-vcplanner-mt-srv.cfapps.us10-001.hana.ondemand.com/catalog"
+            "url": "https://sbp-mttdev-dev-vcplanner-mt-srv.cfapps.us10-001.hana.ondemand.com/catalog"
           }
         },
         "[production]": {
@@ -108,12 +108,12 @@
         "model": "srv/external/config_products_anal",
         "[development]": {
           "credentials": {
-            "url": "https://sbpmtt-dev-vcplanner-mt-srv.cfapps.us10-001.hana.ondemand.com/analytical"
+            "url": "https://sbp-mttdev-dev-vcplanner-mt-srv.cfapps.us10-001.hana.ondemand.com/analytical"
           }
         },
         "[production]": {
           "credentials": {
-            "destination": "ConfigProdAuth",
+            "destination": "ConfigProdoAuth",
             "path": "v2/analytical"
           }
         }
@@ -123,12 +123,12 @@
         "model": "srv/external/planner",
         "[development]": {
           "credentials": {
-            "url": "https://sbpmtt-dev-vcplanner-mt-srv.cfapps.us10-001.hana.ondemand.com/planner"
+            "url": "https://sbp-mttdev-dev-vcplanner-mt-srv.cfapps.us10-001.hana.ondemand.com/planner"
           }
         },
         "[production]": {
           "credentials": {
-            "destination": "ConfigProdAuth",
+            "destination": "ConfigProdoAuth",
             "path": "v2/planner"
           }
         }
